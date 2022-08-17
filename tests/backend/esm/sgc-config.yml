@@ -1,0 +1,54 @@
+--- # Generator 1
+schema: "./graphql/schema.graphql"
+endpoint: http://localhost:4000/graphql
+devEndpoint: http://localhost:4000/graphql
+installDeps: false
+useYarn: true
+indentSpaces: 2
+useSingleQuotes: true
+disableWarnings: false
+objectRecursionLimit: 5
+importsAsEsm: false
+prettierFormat: false
+
+generator:
+  - schema:
+    outputDir: ./graphql
+
+
+article:
+title: "Reading and Writing YAML to a File in Node.js/JavaScript"
+url_path: "/reading-and-writing-yaml-to-a-file-in-node-js-javascript"
+domain: "stackabuse.com"
+port: 443
+is-https: true
+test: ${test.a}
+test2: ${test2}
+test3: ${NODE_ENV}
+scalars:
+  Lang: {override: 'Record<Language, string>'}
+  Langs: {override: 'Record<Language, string[]>'}
+  MenuScalar: {override: 'Menu'}
+  DecimalScalar: {override: 'Prisma.Decimal', newImport: "Prisma", fromImport: "@prisma/client"}
+meta:
+  published-at: "Nov. 1st, 2019"
+  author:
+    name: "Scott Robinson"
+    contact: "scott@stackabuse.com"
+    scalars:
+      Lang: {override: 'Record<Language, string>'}
+      Langs: {override: 'Record<Language, string[]>'}
+      MenuScalar: {override: 'Menu'}
+      DecimalScalar: {override: 'Prisma.Decimal', newImport: "Prisma", fromImport: "@prisma/client"}
+  tags:
+    - javascript
+    - node.js
+    - web development
+
+--- # Document 2
+article:
+title: "Reading and Writing YAML to a File in Node.js/JavaScript"
+url_path: "/reading-and-writing-yaml-to-a-file-in-node-js-javascript"
+domain: "stackabuse.com"
+port: 443
+is-https: true

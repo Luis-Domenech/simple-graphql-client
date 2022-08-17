@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "workspaces": [
+    "simple-graphql-client",
+    "tests/frontend",
+    "tests/backend/commonjs",
+    "tests/backend/esm"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "16.2.3",
+    "@commitlint/config-conventional": "16.0.0",
+    "eslint": "^8.21.0",
+    "husky": "7.0.4",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "build": "cd ./simple-graphql-client && yarn build",
+    "backend-gen": "NODE_ENV=development yarn build && cd tests/backend/commonjs && yarn && yarn gen",
+    "backend-test": "cd tests/backend/commonjs && yarn test",
+    "deploy": "cd simple-graphql-client && yarn && yarn deploy"
+  },
+  "packageManager": "yarn@3.2.2"
+}

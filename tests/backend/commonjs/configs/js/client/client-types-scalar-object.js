@@ -1,0 +1,35 @@
+module.exports = {
+  schemaPath: "graphql/schema.graphql",
+  endpoint: "http://localhost:4000/graphql",
+  devEndpoint: "http://localhost:4000/graphql",
+  installDeps: false,
+  useYarn: true,
+  indentSpaces: 2,
+  useSingleQuotes: true,
+  disableWarnings: false,
+  objectRecursionLimit: 5,
+  importsAsEsm: false,
+  prettierFormat: false,
+  generator: {
+    client: {
+      outputDir: "generated/sgc",
+      fetchDelay: 3000,
+      loopFetchLimit: 5
+    },
+    types: {
+      outputDir: "generated/sgc",
+      enumAsType: false,
+      enumAsConst: true,
+      addTypenameField: true,
+      enumTypeSuffix: "_Enum",
+      addNull: true,
+      addUndefined: true,
+      scalarOverrides: {
+        Lang: { override: 'Record<Language, string>' },
+        Langs: { override: 'Record<Language, string[]>' },
+        MenuScalar: { override: 'Menu' },
+        DecimalScalar: { override: 'Prisma.Decimal', import: "Prisma", from: "@prisma/client", isDefault: false }
+      }
+    }
+  }
+}

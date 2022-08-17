@@ -1,0 +1,19 @@
+module.exports = {
+  schemaPath: "graphql/schema.graphql",
+  endpoint: "http://localhost:4000/graphql",
+  devEndpoint: "http://localhost:4000/graphql",
+  installDeps: false,
+  useYarn: true,
+  indentSpaces: 2,
+  useSingleQuotes: true,
+  disableWarnings: false,
+  objectRecursionLimit: 5,
+  importsAsEsm: false,
+  prettierFormat: false,
+  generator: {
+    schema: {
+      outputDir: "graphql",
+      Authorization: null
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext"
+  },
+  "ts-node": {
+    "swc": true,
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "module": "ESNext",
+      "moduleResolution": "NodeNext",
+      "target": "ESNext"
+    },
+  }
+}
