@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.1...v1.0.2) (2022-08-17)
+
+
+### Bug Fixes
+
+* **package:** Package is being renamed to lfd-graphql-client ([b3ede22](https://github.com/Luis-Domenech/simple-graphql-client/commit/b3ede22b0c4b0bc43b481185334adc71b1fd2eed))
+* **package:** Updated yarn lock ([70f77f1](https://github.com/Luis-Domenech/simple-graphql-client/commit/70f77f1065929a2780af6991cfcc7fec6236de0a))
+
 ## [1.0.1](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.0...v1.0.1) (2022-08-17)
 
 
