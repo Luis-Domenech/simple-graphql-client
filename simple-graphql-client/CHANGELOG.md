@@ -1,3 +1,13 @@
+## [1.0.3](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.2...v1.0.3) (2022-08-17)
+
+
+### Bug Fixes
+
+* **package:** Added aforementioned fix xD ([659afe6](https://github.com/Luis-Domenech/simple-graphql-client/commit/659afe6d839b6231bde73cfdba9a86abf90c4472))
+* **package:** Another fix ([647f823](https://github.com/Luis-Domenech/simple-graphql-client/commit/647f823558d834e2373c95c0fecec3ad44cfe4bc))
+* **package:** Fixed issue on schema gen ([dc10081](https://github.com/Luis-Domenech/simple-graphql-client/commit/dc1008135d71d5cff6b48094d3d44dcaa5f86334))
+* **package:** Fixed type issue in schema gen ([e0ccad7](https://github.com/Luis-Domenech/simple-graphql-client/commit/e0ccad7ff9f1ec913a55c353c3e198ce2db1a571))
+
 ## [1.0.2](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.1...v1.0.2) (2022-08-17)
 
 
