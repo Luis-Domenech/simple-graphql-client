@@ -12,28 +12,32 @@ export const query_schema = async (config: GeneratorConfig): Promise<string | nu
     const prod = process.env ? process.env.NODE_ENV ? process.env.NODE_ENV === "production" ? true : false : false : false
     const endpoint = prod ? config.global.endpoint : config.global.dev_endpoint
     
-    const response: Response = await fetch(endpoint, {
-      method: "POST",
-      headers: config.schema.authorization ? { "Content-Type": "application/json", "Authorization": config.schema.authorization } : { "Content-Type": "application/json"},
-      body: JSON.stringify({ query: getIntrospectionQuery() }),
-    })
-
-
-    const res: any = await response.json()
-
-    if (!res) {
-      logger.error(`Error querying schema from endpoint`)
-      return null
+    if (!endpoint) {
+      logger.error("Config option (endpoint) is needed to run schema generator")
     }
-
-    if (!res.data) {
-      logger.error(`Schema query didn't respond with data`)
-      return null
+    else {
+      const response: Response = await fetch(endpoint, {
+        method: "POST",
+        headers: config.schema.authorization ? { "Content-Type": "application/json", "Authorization": config.schema.authorization } : { "Content-Type": "application/json"},
+        body: JSON.stringify({ query: getIntrospectionQuery() }),
+      })
+  
+      const res: any = await response.json()
+  
+      if (!res) {
+        logger.error(`Error querying schema from endpoint`)
+        return null
+      }
+  
+      if (!res.data) {
+        logger.error(`Schema query didn't respond with data`)
+        return null
+      }
+  
+      const graphql_schema_obj = buildClientSchema(res.data)
+  
+      return printSchema(graphql_schema_obj) 
     }
-
-    const graphql_schema_obj = buildClientSchema(res.data)
-
-    return printSchema(graphql_schema_obj)
   }
   catch (e) {
     logger.error(e)
