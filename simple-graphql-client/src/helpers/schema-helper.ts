@@ -7,7 +7,10 @@ import { GeneratorConfig } from '../types.js'
 
 export const query_schema = async (config: GeneratorConfig): Promise<string | null> => {
   try {
-    const endpoint = process.env ? process.env.NODE_ENV === "production" ? config.global.endpoint : config.global.dev_endpoint : config.global.endpoint
+    if (!config.global.dev_endpoint) config.global.dev_endpoint = config.global.endpoint
+    
+    const prod = process.env ? process.env.NODE_ENV ? process.env.NODE_ENV === "production" ? true : false : false : false
+    const endpoint = prod ? config.global.endpoint : config.global.dev_endpoint
     
     const response: Response = await fetch(endpoint, {
       method: "POST",
