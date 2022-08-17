@@ -25,7 +25,6 @@
     "dev": "tsc -w",
     "clean": "rm -rf dist || true",
     "build": "yarn lint-f && yarn clean && tsc",
-    "prepack": "yarn build",
     "test": "jest",
     "lint": "eslint ./src --quiet --parser-options=project:./tsconfig.json -c ./.eslintrc --ext .ts",
     "lint-f": "eslint ./src --quiet --fix --parser-options=project:./tsconfig.json -c ./.eslintrc --ext .ts",
