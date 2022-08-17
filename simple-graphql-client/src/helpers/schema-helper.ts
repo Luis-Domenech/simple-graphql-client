@@ -7,7 +7,9 @@ import { GeneratorConfig } from '../types.js'
 
 export const query_schema = async (config: GeneratorConfig): Promise<string | null> => {
   try {
-    const response: Response = await fetch(config.global.endpoint!, {
+    const endpoint = process.env ? process.env.NODE_ENV === "production" ? config.global.endpoint : config.global.dev_endpoint : config.global.endpoint
+    
+    const response: Response = await fetch(endpoint, {
       method: "POST",
       headers: config.schema.authorization ? { "Content-Type": "application/json", "Authorization": config.schema.authorization } : { "Content-Type": "application/json"},
       body: JSON.stringify({ query: getIntrospectionQuery() }),
@@ -37,14 +39,15 @@ export const query_schema = async (config: GeneratorConfig): Promise<string | nu
   return null
 }
 
-export const read_schema = async (config: GeneratorConfig): Promise<string | null> => {
+export const read_schema = async (config: GeneratorConfig, ignore_read_error = false): Promise<string | null> => {
   try {
     const schema_data: Buffer = fs.readFileSync(config.global.schema_path!)
     const raw_sdl = schema_data.toString()
     return raw_sdl
   }
   catch(e) {
-    logger.error(e)
+    if (ignore_read_error && typeof e === "string" && e.includes("ENOENT")) return null
+    else logger.error(e)
   }
   return null
 }
