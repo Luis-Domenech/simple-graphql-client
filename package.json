@@ -1,11 +1,5 @@
 {
   "private": true,
-  "workspaces": [
-    "simple-graphql-client",
-    "tests/frontend",
-    "tests/backend/commonjs",
-    "tests/backend/esm"
-  ],
   "devDependencies": {
     "@commitlint/cli": "16.2.3",
     "@commitlint/config-conventional": "16.0.0",
