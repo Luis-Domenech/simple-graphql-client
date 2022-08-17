@@ -25,7 +25,7 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install dependencies
-        run: yarn install --immutable
+        run: yarn
       - name: Publish 🚀
         run: yarn deploy
         env:
