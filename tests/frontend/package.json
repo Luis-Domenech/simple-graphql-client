@@ -12,7 +12,7 @@
     "next": "12.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "simple-graphql-client": "file:../../simple-graphql-client"
+    "simple-graphql-client": "1.0.0"
   },
   "devDependencies": {
     "@types/node": "18.0.4",

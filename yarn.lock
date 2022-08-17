@@ -2478,7 +2478,7 @@ __metadata:
     "@types/node-fetch": ^2.6.2
     node-fetch: ^2.6.6
     regenerator-runtime: ^0.13.9
-    simple-graphql-client: "file:../../../simple-graphql-client"
+    simple-graphql-client: 1.0.0
     ts-node: ^10.9.1
     typescript: ^4.7.4
   languageName: unknown
@@ -3912,7 +3912,7 @@ __metadata:
     "@swc/wasm": ^1.2.236
     "@types/node": 17.0.21
     regenerator-runtime: ^0.13.9
-    simple-graphql-client: "file:../../../simple-graphql-client"
+    simple-graphql-client: 1.0.0
     ts-node: ^10.9.1
     typescript: ^4.7.4
   languageName: unknown
@@ -4223,7 +4223,7 @@ __metadata:
     next: 12.2.2
     react: 18.2.0
     react-dom: 18.2.0
-    simple-graphql-client: "file:../../simple-graphql-client"
+    simple-graphql-client: 1.0.0
     typescript: 4.7.4
   languageName: unknown
   linkType: soft
@@ -8173,67 +8173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-graphql-client@file:../../../simple-graphql-client::locator=backend%40workspace%3Atests%2Fbackend%2Fcommonjs":
-  version: 1.0.0
-  resolution: "simple-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=cd9933&locator=backend%40workspace%3Atests%2Fbackend%2Fcommonjs"
-  dependencies:
-    envsub: ^4.0.7
-    graphql: ^16.5.0
-    js-yaml: ^4.1.0
-    lfd-utils: ^1.0.22
-    node-fetch: ^3.2.8
-    prettier: 2.5.1
-    simple-wasm-graphql-parser: ^1.0.5
-    yargs: ^17.5.1
-  bin:
-    sgc: ./dist/bin.js
-    sgc-codegen: ./dist/bin.js
-    simple-graphql-client: ./dist/bin.js
-  checksum: 68b848579b696d2b3b24b1a294cef2cf47b0fad8594a7c3d3df4e8014310235d1be4d4705be7602ff7e65d59b657e36b73cdc910535f25bd8b128a5fb638cd70
-  languageName: node
-  linkType: hard
-
-"simple-graphql-client@file:../../../simple-graphql-client::locator=esm%40workspace%3Atests%2Fbackend%2Fesm":
-  version: 1.0.0
-  resolution: "simple-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=cd9933&locator=esm%40workspace%3Atests%2Fbackend%2Fesm"
-  dependencies:
-    envsub: ^4.0.7
-    graphql: ^16.5.0
-    js-yaml: ^4.1.0
-    lfd-utils: ^1.0.22
-    node-fetch: ^3.2.8
-    prettier: 2.5.1
-    simple-wasm-graphql-parser: ^1.0.5
-    yargs: ^17.5.1
-  bin:
-    sgc: ./dist/bin.js
-    sgc-codegen: ./dist/bin.js
-    simple-graphql-client: ./dist/bin.js
-  checksum: 68b848579b696d2b3b24b1a294cef2cf47b0fad8594a7c3d3df4e8014310235d1be4d4705be7602ff7e65d59b657e36b73cdc910535f25bd8b128a5fb638cd70
-  languageName: node
-  linkType: hard
-
-"simple-graphql-client@file:../../simple-graphql-client::locator=frontend%40workspace%3Atests%2Ffrontend":
-  version: 1.0.0
-  resolution: "simple-graphql-client@file:../../simple-graphql-client#../../simple-graphql-client::hash=cd9933&locator=frontend%40workspace%3Atests%2Ffrontend"
-  dependencies:
-    envsub: ^4.0.7
-    graphql: ^16.5.0
-    js-yaml: ^4.1.0
-    lfd-utils: ^1.0.22
-    node-fetch: ^3.2.8
-    prettier: 2.5.1
-    simple-wasm-graphql-parser: ^1.0.5
-    yargs: ^17.5.1
-  bin:
-    sgc: ./dist/bin.js
-    sgc-codegen: ./dist/bin.js
-    simple-graphql-client: ./dist/bin.js
-  checksum: 68b848579b696d2b3b24b1a294cef2cf47b0fad8594a7c3d3df4e8014310235d1be4d4705be7602ff7e65d59b657e36b73cdc910535f25bd8b128a5fb638cd70
-  languageName: node
-  linkType: hard
-
-"simple-graphql-client@workspace:simple-graphql-client":
+"simple-graphql-client@1.0.0, simple-graphql-client@workspace:simple-graphql-client":
   version: 0.0.0-use.local
   resolution: "simple-graphql-client@workspace:simple-graphql-client"
   dependencies:
