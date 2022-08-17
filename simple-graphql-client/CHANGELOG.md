@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.0...v1.0.1) (2022-08-17)
+
+
+### Bug Fixes
+
+* **package:** Fixed how package was being linked in tests ([a32cf30](https://github.com/Luis-Domenech/simple-graphql-client/commit/a32cf30abae049a3cd8835ea924c062cf3492358))
+* **package:** Removed prepack script ([2a88e9a](https://github.com/Luis-Domenech/simple-graphql-client/commit/2a88e9a57ab229d5b7937af8c7751728405c26ef))
+* **package:** Temp fix ([e67e0d5](https://github.com/Luis-Domenech/simple-graphql-client/commit/e67e0d576c7d5a316778fce88f965b0f7c5b3ac0))
+
 # 1.0.0 (2022-08-17)
 
 
