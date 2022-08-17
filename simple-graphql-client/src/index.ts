@@ -25,7 +25,7 @@ export const run_generator = async (config_path: string, env_path: string) => {
 
     if (config.global.schema_path) {
       // If schema path was provided, attempt to read it and if it checks out, we skip schema querying
-      raw_sdl = await read_schema(config)
+      raw_sdl = await read_schema(config, true)
       if (!raw_sdl) logger.warn(`Error reading schema from schema path at ${config.global.schema_path}`)
       else {
         logger.warn(`Schema was found. Skipping schema query.`)
