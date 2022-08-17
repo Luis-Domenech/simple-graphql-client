@@ -2478,7 +2478,7 @@ __metadata:
     "@types/node-fetch": ^2.6.2
     node-fetch: ^2.6.6
     regenerator-runtime: ^0.13.9
-    simple-graphql-client: 1.0.0
+    simple-graphql-client: "workspace:^"
     ts-node: ^10.9.1
     typescript: ^4.7.4
   languageName: unknown
@@ -3912,7 +3912,7 @@ __metadata:
     "@swc/wasm": ^1.2.236
     "@types/node": 17.0.21
     regenerator-runtime: ^0.13.9
-    simple-graphql-client: 1.0.0
+    simple-graphql-client: "workspace:^"
     ts-node: ^10.9.1
     typescript: ^4.7.4
   languageName: unknown
@@ -4223,7 +4223,7 @@ __metadata:
     next: 12.2.2
     react: 18.2.0
     react-dom: 18.2.0
-    simple-graphql-client: 1.0.0
+    simple-graphql-client: "workspace:^"
     typescript: 4.7.4
   languageName: unknown
   linkType: soft
@@ -8173,7 +8173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-graphql-client@1.0.0, simple-graphql-client@workspace:simple-graphql-client":
+"simple-graphql-client@workspace:^, simple-graphql-client@workspace:simple-graphql-client":
   version: 0.0.0-use.local
   resolution: "simple-graphql-client@workspace:simple-graphql-client"
   dependencies:
