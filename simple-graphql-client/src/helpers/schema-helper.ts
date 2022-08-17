@@ -53,7 +53,7 @@ export const read_schema = async (config: GeneratorConfig, ignore_read_error = f
     return raw_sdl
   }
   catch(e) {
-    if (ignore_read_error && typeof e === "string" && e.includes("ENOENT")) return null
+    if (ignore_read_error) return null
     else logger.error(e)
   }
   return null
