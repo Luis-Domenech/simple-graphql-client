@@ -886,6 +886,7 @@ export const gen_client_utils = async (data: GeneratorData, config: GeneratorCon
 
   utils.push(`export const capitalize_first_word = (input: string) => input.charAt(0).toUpperCase() + input.slice(1)`)
   utils.push(`export const delay = (d: number) => new Promise(resolve => setTimeout(resolve, d))`)
+  utils.push(`export const contains = (target: string, pattern: string[], case_sensitive = true): boolean => { let found = false; pattern.map(async (word) => { if (case_sensitive ? target.includes(word) : target.toLocaleLowerCase().includes(word.toLocaleLowerCase())) found = true }); return found }`)
   utils.push([
     `export const indent: IndentOverload = (a?: string | number, b?: number, c?: string | number): string => {`,
     `${i(1)}let to_indent = ""`,
@@ -1225,16 +1226,34 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(5)}// console.log(rec_limit)`,
     `${i(5)}if (overriden_recursion_limit) {console.log(field_type); console.log(overriden_recursion_limit); console.log(type_rec_limit)}`,
     `${i(4)}}`,
-    `${i(4)}if (rec >= type_rec_limit) return`,
-    `${i(4)}const line = indent(\`\${selection} {\`, rec)`,
-    `${i(4)}operation_request_query.push(line)`,
-    `${i(4)}await gen_operation_request_query(operation, selection_set[selection], rec + 1, type_rec_limit, operation_request_query, [...parent_queue, selection])`,
-    `${i(4)}// Check if we were given an object of false selection, which in that case, we must then remove the bracket we added`,
-    `${i(4)}if (operation_request_query[operation_request_query.length - 1] === line) {`,
-    `${i(5)}operation_request_query[operation_request_query.length - 1] = operation_request_query[operation_request_query.length - 1].slice(0, -2)`,
+    `${i(4)}if (rec >= type_rec_limit) {`,
+    `${i(5)}if ((!union_select && rec === 2) || (union_select && rec === 3)) {`,
+    `${i(6)}// Here means rec limit is greatern than first recursion. In this case`,
+    `${i(6)}// we will just update type_rec_limit to allow on recursion for this object`,
+    `${i(6)}type_rec_limit = rec + 1`,
+    `${i(5)}}`,
+    `${i(5)}else {`,
+    `${i(6)}return`,
+    `${i(5)}}`,
+    `${i(4)}}`,
+    `${i(4)}// We can quickly here determine if not to recurse if selection[selection] has no fields. This will remove most problems with recursion limit being greatern than select set`,
+    `${i(4)}if (Object.keys(selection_set[selection]).length > 0) {`,
+    `${i(5)}const line = indent(\`\${selection} {\`, rec)`,
+    `${i(5)}operation_request_query.push(line)`,
+    `${i(5)}await gen_operation_request_query(operation, selection_set[selection], rec + 1, type_rec_limit, operation_request_query, [...parent_queue, selection])`,
+    `${i(5)}// Check if we were given an object of false selection, which in that case, we must then remove the bracket we added`,
+    `${i(5)}if (operation_request_query[operation_request_query.length - 1] === line) {`,
+    `${i(6)}operation_request_query[operation_request_query.length - 1] = operation_request_query[operation_request_query.length - 1].slice(0, -2)`,
+    `${i(5)}}`,
     `${i(4)}}`,
     `${i(3)}}`,
-    `${i(3)}else if (selection_set[selection] === true) operation_request_query.push(indent(\`\${selection}\`, rec))`,
+    `${i(3)}else if (selection_set[selection] === true) {operation_request_query.push(indent(\`\${selection}\`, rec))`,
+    `${i(4)}// Check if type of the field is a primitive. If that's the case, add the field`,
+    `${i(4)}const field_type = recurse_operation_types(selection, GRAPHQL_OPERATION_DATA[operation]['output_types'], [...parent_queue, selection])`,
+    `${i(4)}if (!field_type) return // If at recursion limit, don't do anything else`,
+    `${i(4)}const primitives = ["String", "ID", "Int", "Float", "DecimalScalar", "GraphQLBigInt", "GraphQLJSONObject", "GraphQLByte", "Date", "Boolean", "DateTime", "JSON", "Json"]`,
+    `${i(4)}if (contains(field_type, primitives)) operation_request_query.push(indent(\`\${selection}\`, rec))`,
+    `${i(3)}}`,
     `${i(2)}})`,
     `${i(2)}const curr_line = operation_request_query[operation_request_query.length - 1]`,
     `${i(2)}if (curr_line !== line) {`,
@@ -1261,6 +1280,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
   // add_relative_import('gen_operation_request_query', 'OBJECT_RECURSION_LIMIT', data, config)
   // add_relative_import('gen_operation_request_query', 'GRAPHQL_UNION', data, config)
   add_relative_import('gen_operation_request_query', 'indent', data, config)
+  add_relative_import('gen_operation_request_query', 'contains', data, config)
 
 
   functions.push([
@@ -1402,8 +1422,9 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(3)}operation_request_query.push(\`\${indent(1)}\${operation} {\`)`,
     `${i(2)}}`,
     `${i(2)}if (parsed_selection_set) {`,
-    `${i(3)}await gen_operation_request_query(operation, parsed_selection_set, 2, OBJECT_RECURSION_LIMIT, operation_request_query, [])`,
-    `${i(3)}operation_request_query.push('}')`,
+    `${i(3)}await gen_operation_request_query(operation, parsed_selection_set, 2, 2 + OBJECT_RECURSION_LIMIT, operation_request_query, [])`,
+    `${i(3)}if (!operation_request_query[operation_request_query.length - 1].includes("}") && operation_request_query[operation_request_query.length - 1].includes("(")) operation_request_query.push("{ __typename }")`,
+    `${i(3)}else operation_request_query.push('}')`,
     `${i(2)}}`,
     `${i(2)}else {`,
     `${i(3)}operation_request_query[operation_request_query.length - 1] = operation_request_query[operation_request_query.length - 1].slice(0, -2)`,
