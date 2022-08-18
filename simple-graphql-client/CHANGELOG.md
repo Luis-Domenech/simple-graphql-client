@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.6...v1.0.7) (2022-08-18)
+
+
+### Bug Fixes
+
+* **package:** Fixed some issues with operation query string auto generator ([0e54416](https://github.com/Luis-Domenech/simple-graphql-client/commit/0e544167087bba7292783a6ed79fdd83c80e514c))
+
 ## [1.0.6](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.5...v1.0.6) (2022-08-18)
 
 
