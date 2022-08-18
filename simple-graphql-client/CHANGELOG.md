@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.4...v1.0.5) (2022-08-18)
+
+
+### Bug Fixes
+
+* **package:** Added type fixes to some functions ([b896844](https://github.com/Luis-Domenech/simple-graphql-client/commit/b8968449c6c1fae63040997a15f283a934c5561d))
+
 ## [1.0.4](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.3...v1.0.4) (2022-08-17)
 
 
