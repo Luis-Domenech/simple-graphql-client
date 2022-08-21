@@ -394,8 +394,8 @@ __metadata:
   linkType: hard
 
 "lfd-graphql-client@file:../../../simple-graphql-client::locator=esm%40workspace%3A.":
-  version: 1.0.9
-  resolution: "lfd-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=ab3266&locator=esm%40workspace%3A."
+  version: 1.0.10
+  resolution: "lfd-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=cd6993&locator=esm%40workspace%3A."
   dependencies:
     envsub: ^4.0.7
     graphql: ^16.5.0
@@ -409,7 +409,7 @@ __metadata:
     sgc: ./dist/bin.js
     sgc-codegen: ./dist/bin.js
     simple-graphql-client: ./dist/bin.js
-  checksum: 5c378a50eb5ec28689b431844fbb0a760afebe79fff9d6f4fe8484224ac53db8290f0f5bf3624c110865d9d692247f456e43ec03a88779da7944e85622f7f413
+  checksum: 51c42bfc356c30c6122b21b1214a48030e6a89636d60c1b5190bdc4c1f8aff2a74d60f3b9016db8e6acbab820d31dff63516265e61d3304d27d5844969dea794
   languageName: node
   linkType: hard
 
