@@ -1,31 +1,39 @@
 --- # Client and Types Gen in Array Form and Scalar Overrides in Array Form
 schemaPath: graphql/schema.graphql
 endpoint: http://localhost:4000/graphql
-devEndpoint: http://localhost:4000/graphql
-installDeps: false
+# devEndpoint: http://localhost:4000/graphql
+installDeps: true
+installTypes: true
 useYarn: true
 indentSpaces: 2
 useSingleQuotes: true
 disableWarnings: false
 objectRecursionLimit: 5
-importsAsEsm: false
+importsAsEsm: true
 prettierFormat: false
+useConventions: false
 
 generator:
   - client:
-      outputDir: generated/sgc
-      fetchDelay: 3000
-      loopFetchLimit: 5
+      outputDir: generated/sgc/client
+      endpoint: http://localhost:4000/graphql
+      fetchDelay: 3
+      loopFetchLimit: 3
+      wipeOutputDir: true
+      # recursionOverrides: 
+      #   - Account: 1
   - types:
-      outputDir: generated/sgc
+      outputDir: generated/sgc/types
       enumAsType: false
       enumAsConst: true
       addTypenameField: true
       enumTypeSuffix: _Enum
       addNull: true
       addUndefined: true
+      wipeOutputDir: true
       scalars:
-        - Lang: { override: 'Record<Language, string>' }
-        - Langs: { override: 'Record<Language, string[]>' }
+        - Lang: { override: 'Record<Language, string>', import: "Language" }
+        - DateTime: { override: 'Date' }
+        - Langs: { override: 'Record<Language, string[]>', import: "Language" }
         - MenuScalar: { override: 'Menu' }
         - DecimalScalar: { override: 'Prisma.Decimal', import: "Prisma", from: "@prisma/client", isDefault: false }

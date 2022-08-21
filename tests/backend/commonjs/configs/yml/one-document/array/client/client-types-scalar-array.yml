@@ -9,7 +9,7 @@ indentSpaces: 2
 useSingleQuotes: true
 disableWarnings: false
 objectRecursionLimit: 5
-importsAsEsm: true
+importsAsEsm: false
 prettierFormat: false
 useConventions: false
 

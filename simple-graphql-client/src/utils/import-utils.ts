@@ -168,24 +168,24 @@ export const add_relative_import = (type_name: string, type_to_import: string, d
   if (type_file_data && to_import_file_data) {
     const same_dir = type_file_data.generator === to_import_file_data.generator
     
-    let type_file_path = path.join(process.cwd(), type_file_data.file_path)
-    let to_import_file_path = same_dir ? path.join(process.cwd(), to_import_file_data.same_dir_import_path) : path.join(process.cwd(), to_import_file_data.from_import_path)
+    let type_file_path = type_file_data.file_path
+    let to_import_file_path = same_dir ? to_import_file_data.same_dir_import_path : to_import_file_data.from_import_path
 
     if (type_file_path.endsWith("/") || type_file_path.endsWith("\\")) type_file_path = type_file_path.slice(0, -1)
     type_file_path = match_first(type_file_path, REGEX.match_file_path)
     if (type_file_path.endsWith("/") || type_file_path.endsWith("\\")) type_file_path = type_file_path.slice(0, -1)
 
-    if (to_import_file_path.endsWith("/") || to_import_file_path.endsWith("\\")) to_import_file_path = to_import_file_path.slice(0, -1)
-    to_import_file_path = same_dir ? match_first(to_import_file_path, REGEX.match_file_path) : to_import_file_path
-    if (to_import_file_path.endsWith("/") || to_import_file_path.endsWith("\\")) to_import_file_path = to_import_file_path.slice(0, -1)
+    if (!config.global.imports_as_esm) {
+      if (to_import_file_path.endsWith("/") || to_import_file_path.endsWith("\\")) to_import_file_path = to_import_file_path.slice(0, -1)
+      to_import_file_path = same_dir ? match_first(to_import_file_path, REGEX.match_file_path) : to_import_file_path
+      if (to_import_file_path.endsWith("/") || to_import_file_path.endsWith("\\")) to_import_file_path = to_import_file_path.slice(0, -1)
+    }
 
     let relative_import_path = path.relative(type_file_path, to_import_file_path)
 
     if (!relative_import_path) relative_import_path = config.global.imports_as_esm ? './index.js' : './'
 
-    if (config.global.imports_as_esm) {
-      if (!relative_import_path.endsWith('.js')) relative_import_path += '.js'
-    }
+    if (config.global.imports_as_esm && !relative_import_path.endsWith('.js')) relative_import_path += '.js'
 
     add_import(type_to_import, relative_import_path, false, type_file_data.imports)
   }

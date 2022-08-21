@@ -18,8 +18,8 @@ export const install_dependencies = async (dependencies: Map<string, DependencyD
     
     const package_manager = config.global.use_yarn ? 'yarn add' : 'npm i'
     const dev_package_manager = config.global.use_yarn ? 'yarn add --dev' : 'npm i -D'
-  
-    const has_dependency = package_json.includes(`${dep.version ? dep.dependency + "@^" + dep.version : dep.dependency}`)
+    
+    const has_dependency = package_json.includes(`"${dep.version ? dep.dependency + "@^" + dep.version : dep.dependency}"`)
     
     if (has_dependency) {
       logger.info(`Dependency already installed`)
@@ -30,9 +30,10 @@ export const install_dependencies = async (dependencies: Map<string, DependencyD
       else logger.info(`Dependency installed`)
     }
 
-    if (config.global.install_types) {
+    // Don't install types if installing node-fetch@2.6.6
+    if (config.global.install_types && !(dep.dependency === "node-fetch" && !config.global.imports_as_esm)) {
       logger.info(`Attempting to install types -> @types/${dep.dependency}`)
-      const has_types = package_json.includes(` @types/${dep.dependency}`)
+      const has_types = package_json.includes(`"@types/${dep.dependency}"`)
       if (has_types) {
         logger.info(`Types already installed`)
       }
