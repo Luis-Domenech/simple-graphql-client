@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.8...v1.0.9) (2022-08-21)
+
+
+### Bug Fixes
+
+* **pacakge:** Actually fixed issue with imports as esm ([baeeb54](https://github.com/Luis-Domenech/simple-graphql-client/commit/baeeb54985f0348b4d77277dbd88f58b7598d212))
+
 ## [1.0.8](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.7...v1.0.8) (2022-08-21)
 
 
