@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.9...v1.0.10) (2022-08-21)
+
+
+### Bug Fixes
+
+* **functions:** Fixed type issue on headers const in functions ([3f06320](https://github.com/Luis-Domenech/simple-graphql-client/commit/3f063201b3db2220b1f622213f677ce004017736))
+
 ## [1.0.9](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.8...v1.0.9) (2022-08-21)
 
 
