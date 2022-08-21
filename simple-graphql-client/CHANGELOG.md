@@ -1,3 +1,13 @@
+## [1.0.8](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.7...v1.0.8) (2022-08-21)
+
+
+### Bug Fixes
+
+* **CI:** Changes to yarn lock ([8d770bb](https://github.com/Luis-Domenech/simple-graphql-client/commit/8d770bb3a62cb40ff850c301b91f11638800d18c))
+* **CI:** fix ([86ac649](https://github.com/Luis-Domenech/simple-graphql-client/commit/86ac649fad522fbb90384e29979894075cfb2d73))
+* **CI:** Fixed CI issue ([3199021](https://github.com/Luis-Domenech/simple-graphql-client/commit/3199021fae2a72fc38955d6da07677db883bbb56))
+* **package:** Fixed importAsEsm not working at all as expected ([c26cc76](https://github.com/Luis-Domenech/simple-graphql-client/commit/c26cc76c6fbf7019ed72f5dd754e78a3d06d7fa6))
+
 ## [1.0.7](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.6...v1.0.7) (2022-08-18)
 
 
