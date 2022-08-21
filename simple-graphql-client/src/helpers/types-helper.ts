@@ -288,7 +288,8 @@ export const gen_interfaces = async (data: GeneratorData, config: GeneratorConfi
       if (i.name.includes("?") && config.types.add_null && config.types.add_typename_field) typename_field += ' | null'
       if (i.name.includes("?") && config.types.add_undefined && config.types.add_typename_field) typename_field += ' | undefined'
 
-      const interface_implements = !i.implements ? "" : i.implements.map(implement => {
+      const interface_implements = !i.implements ? "" : i.implements.map((implement: string) => {
+        add_relative_import(i.name, implement, data, config)
         return config.types.add_typename_field ? `Omit<${implement}, "__typename">` : implement
       }).filter(Boolean).join(" & ")
 
@@ -297,7 +298,7 @@ export const gen_interfaces = async (data: GeneratorData, config: GeneratorConfi
         `export type ${i.name} = {`,
           typename_field,
           fields,
-        `} ${interface_implements}\n`
+        `} ${interface_implements ? "& " + interface_implements : ""}\n`
       ].filter(Boolean).join("\n")
     }))
 
@@ -320,6 +321,7 @@ export const gen_objects = async (data: GeneratorData, config: GeneratorConfig):
       if (o.name.includes("?") && config.types.add_undefined && config.types.add_typename_field) typename_field += ' | undefined'
 
         const object_implements = !o.implements ? "" : o.implements.map(implement => {
+          add_relative_import(o.name, implement, data, config)
           return config.types.add_typename_field ? `Omit<${implement}, "__typename">` : implement
         }).filter(Boolean).join(" & ")
 
@@ -328,7 +330,7 @@ export const gen_objects = async (data: GeneratorData, config: GeneratorConfig):
           `export type ${o.name} = {`,
             typename_field,
             fields,
-          `} ${object_implements}\n`
+          `} ${object_implements ? "& " + object_implements : ""}\n`
         ].filter(Boolean).join("\n")
       }
       else return ""

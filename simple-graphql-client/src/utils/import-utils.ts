@@ -166,8 +166,13 @@ export const add_relative_import = (type_name: string, type_to_import: string, d
   const to_import_file_data = data.file_data.get(type_to_import)
 
   if (type_file_data && to_import_file_data) {
+    const type_file_data_dir = type_file_data.file_dir.replace(REGEX.match_file_path, "")
+    const to_import_file_data_dir = to_import_file_data.file_dir.replace(REGEX.match_file_path, "")
     const same_dir = type_file_data.generator === to_import_file_data.generator
+    const same_folder = type_file_data_dir === to_import_file_data_dir
     
+
+
     let type_file_path = type_file_data.file_path
     let to_import_file_path = same_dir ? to_import_file_data.same_dir_import_path : to_import_file_data.from_import_path
 
@@ -175,7 +180,7 @@ export const add_relative_import = (type_name: string, type_to_import: string, d
     type_file_path = match_first(type_file_path, REGEX.match_file_path)
     if (type_file_path.endsWith("/") || type_file_path.endsWith("\\")) type_file_path = type_file_path.slice(0, -1)
 
-    if (!config.global.imports_as_esm) {
+    if (!config.global.imports_as_esm || (config.global.imports_as_esm && same_folder)) {
       if (to_import_file_path.endsWith("/") || to_import_file_path.endsWith("\\")) to_import_file_path = to_import_file_path.slice(0, -1)
       to_import_file_path = same_dir ? match_first(to_import_file_path, REGEX.match_file_path) : to_import_file_path
       if (to_import_file_path.endsWith("/") || to_import_file_path.endsWith("\\")) to_import_file_path = to_import_file_path.slice(0, -1)
@@ -184,6 +189,10 @@ export const add_relative_import = (type_name: string, type_to_import: string, d
     let relative_import_path = path.relative(type_file_path, to_import_file_path)
 
     if (!relative_import_path) relative_import_path = config.global.imports_as_esm ? './index.js' : './'
+
+    // if (config.global.imports_as_esm && same_dir) {
+    //   relative_import_path = './index.js'
+    // }
 
     if (config.global.imports_as_esm && !relative_import_path.endsWith('.js')) relative_import_path += '.js'
 
