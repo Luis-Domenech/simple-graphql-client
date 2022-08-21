@@ -393,8 +393,16 @@ export const instantiate_field = async (field: FieldData, add_imports_to: string
 
 export const get_type_name = (str: string, type_name_type: "type" | "class" | "enum" | "interface" | "const"): string => {
   // Remove all comments
-  const name = str.replace(REGEX.match_all_typescript_multiline_comments, "")
-  
+  // const name = str.replace(REGEX.match_all_typescript_multiline_comments, "")
+  let name = str
+  if (str.startsWith("/**")) {
+    const split = str.split("*/") 
+    // If it starts with /**, then we know the comment will end with */
+    // So we just split by that end of comment and the split after is what we want to analyze
+    name = split[1]
+  }
+
+
   // Now the string left should be something like export type TypeName = {... etc
   if (type_name_type === "type") {
     return match_first(name, REGEX.match_type_name)
@@ -411,6 +419,8 @@ export const get_type_name = (str: string, type_name_type: "type" | "class" | "e
   else if (type_name_type === "const") {
     return match_first(name, REGEX.match_const_name)
   }
+
+  
 
   return ""
 }

@@ -183,6 +183,10 @@ export const add_relative_import = (type_name: string, type_to_import: string, d
 
     if (!relative_import_path) relative_import_path = config.global.imports_as_esm ? './index.js' : './'
 
+    if (config.global.imports_as_esm) {
+      if (!relative_import_path.endsWith('.js')) relative_import_path += '.js'
+    }
+
     add_import(type_to_import, relative_import_path, false, type_file_data.imports)
   }
 }

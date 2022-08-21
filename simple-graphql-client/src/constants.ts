@@ -97,7 +97,8 @@ export const REGEX = {
   match_interface_name: /(?<=(interface)[\s\w])[\w]+/gm,
   match_type_name: /(?<=(type)[\s\w])[\w]+/gm,
   match_const_name: /(?<=(const)[\s\w])[\w]+/gm,
-  match_all_typescript_multiline_comments: /((\/\*\*)+[\s\S]+(\*\/))/gm,
+  //((\/\*\*)+[\s\w*'"@():\\\/.,<>;{}\[\]|\-_+~`]+(\*\/))
+  match_all_typescript_multiline_comments: /((\/\*\*)+[\s\S]+(\*\/))/, // Removed gm since we only want to remove first occurence
   match_all_inside_import_brackets: /(?<=({))[\s\S]+(?=(}))/gm,
   match_all_outside_import_brackets: /(?<=(import))[\s\S]+(?=({))/gm,
   match_from_import: /(?<=['"])[\s\S]+(?=['"])/gm,
