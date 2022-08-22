@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.13...v1.0.14) (2022-08-22)
+
+
+### Bug Fixes
+
+* **package:** Fixed typo in operation request query builder ([0b60f3f](https://github.com/Luis-Domenech/simple-graphql-client/commit/0b60f3f40e77fcbfd75156c2c605ad2ac4a5c470))
+
 ## [1.0.13](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.12...v1.0.13) (2022-08-21)
 
 
