@@ -4,7 +4,8 @@
         "simple-graphql-client",
         "tests/backend/esm",
         "tests/backend/commonjs",
-        "tests/frontenf"
+        "tests/frontend",
+        "."
     ],
     "devDependencies": {
         "@commitlint/cli": "16.2.3",
