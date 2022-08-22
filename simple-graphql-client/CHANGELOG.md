@@ -1,3 +1,10 @@
+## [1.0.19](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.18...v1.0.19) (2022-08-22)
+
+
+### Bug Fixes
+
+* **package:** Added bigint to primitives ([75ff8cd](https://github.com/Luis-Domenech/simple-graphql-client/commit/75ff8cd0298ee74d9abbbf49940b3fe646f2a537))
+
 ## [1.0.18](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.17...v1.0.18) (2022-08-22)
 
 
