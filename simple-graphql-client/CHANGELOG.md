@@ -1,3 +1,15 @@
+## [1.0.15](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.14...v1.0.15) (2022-08-22)
+
+
+### Bug Fixes
+
+* **CI:** fixed CI issue ([9939cc5](https://github.com/Luis-Domenech/simple-graphql-client/commit/9939cc5ec253839393d06220696194b2f4ba56fa))
+* **CI:** Fixed CI issue ([a0e1657](https://github.com/Luis-Domenech/simple-graphql-client/commit/a0e1657073bdfdc01eed681da62c57a679098888))
+* **package:** Fixed edge case for operation query builder ([2b65953](https://github.com/Luis-Domenech/simple-graphql-client/commit/2b65953fa05a5a08a4f7333576f3894f3f26003f))
+* **package:** updated CI ([1d0d3df](https://github.com/Luis-Domenech/simple-graphql-client/commit/1d0d3df6fa6da4277f8ec7be4b92b09cd7dd5615))
+* **package:** updated yarn lock file ([17f27bd](https://github.com/Luis-Domenech/simple-graphql-client/commit/17f27bd378d5e936bf00598b6b091644457dfb67))
+* **yarn:** Updated yarn lock ([06cbf3a](https://github.com/Luis-Domenech/simple-graphql-client/commit/06cbf3a57541d776dc51352052c585f6787e5234))
+
 ## [1.0.14](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.13...v1.0.14) (2022-08-22)
 
 
