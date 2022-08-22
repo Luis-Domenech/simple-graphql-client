@@ -1,3 +1,10 @@
+## [1.0.21](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.20...v1.0.21) (2022-08-22)
+
+
+### Bug Fixes
+
+* **functions:** Fixed issue with union return types ([d6c4283](https://github.com/Luis-Domenech/simple-graphql-client/commit/d6c4283f0455b169e8333633327808c3a4aa6ea9))
+
 ## [1.0.20](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.19...v1.0.20) (2022-08-22)
 
 
