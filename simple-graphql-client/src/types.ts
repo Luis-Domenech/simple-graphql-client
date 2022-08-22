@@ -62,6 +62,7 @@ export interface ClientGenConfig {
 export interface SchemaGenConfig {
   to_run: boolean
   output_dir: string
+  use_endpoint: boolean
   authorization: string | undefined
   wipe_output_dir: boolean
 }

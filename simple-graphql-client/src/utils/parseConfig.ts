@@ -146,7 +146,9 @@ const validate_config = async (config: GeneratorConfig) => {
   // Now that we have all data from the config, we must make sure the whole config setup is logically sound
   if (config.client.to_run) {
     if (!config.global.endpoint && !config.global.schema_path) logger.error(`Client generator requires global configs (endpoint) or (schemaPath) to be set`)
-    if (config.global.endpoint && config.global.schema_path) logger.warn(`Config options (endpoint) and (schemaPath) were both provided. Config option (schemaPath) takes precedence, so if file is not found in (schemePath), endpoint will be used instead.`)
+    if (config.global.endpoint && config.global.schema_path && !config.schema.use_endpoint) logger.warn(`Config options (endpoint) and (schemaPath) were both provided. Config option (schemaPath) takes precedence, so if file is not found in (schemePath), endpoint will be used instead.`)
+    if (!config.global.endpoint && config.global.schema_path && config.schema.use_endpoint) logger.warn(`Config options (useEndpoint) was set tot run, but config option (endpoint) was not set, so config option (schemaPath) will be used for schema gen.`)
+    if (config.global.endpoint && config.global.schema_path && config.schema.use_endpoint) logger.warn(`Config options (endpoint) and (schemaPath) were both provided. Config option (schemaPath) takes precedence, but (useEndpoint) was set to true, so endpoint will be used and schemaPath will not be looked at.`)
 
     if (!config.types.to_run && !config.schema.to_run) {
       logger.warn(`Client generator requires types generator to run, so types generator will be ran with default settings`)

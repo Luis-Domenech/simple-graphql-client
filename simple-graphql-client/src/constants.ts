@@ -47,7 +47,8 @@ export const DEFAULT_CONFIG: GeneratorConfig = {
     to_run: false,
     output_dir: './src/generated/simple-graphql-client/graphql',
     authorization: undefined,
-    wipe_output_dir: false
+    wipe_output_dir: false,
+    use_endpoint: false
   },
   types: {
     output_dir: './src/generated/simple-graphql-client/types',

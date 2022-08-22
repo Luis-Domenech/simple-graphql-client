@@ -89,6 +89,7 @@ const initialize_from_user_config = (user_config: any, config: GeneratorConfig) 
     output_dir: wasProvided(user_config.generator.schema.output_dir) ? user_config.generator.schema.output_dir : DEFAULT_CONFIG.schema.output_dir,
     authorization: wasProvided(user_config.generator.schema.authorization) ? user_config.generator.schema.authorization : DEFAULT_CONFIG.schema.authorization,
     wipe_output_dir: wasProvided(user_config.generator.schema.wipe_output_dir) ? user_config.generator.schema.wipe_output_dir : DEFAULT_CONFIG.schema.wipe_output_dir,
+    use_endpoint: wasProvided(user_config.generator.schema.use_endpoint) ? user_config.generator.schema.use_endpoint : DEFAULT_CONFIG.schema.use_endpoint,
   }
 
   let scalars: Map<string, ScalarOverrideData> = new Map()  

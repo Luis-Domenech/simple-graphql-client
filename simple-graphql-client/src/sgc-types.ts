@@ -8,6 +8,7 @@ export type ScalarOverrideData = {
 export type SchemaGeneratorConfig = {
   outputDir?: string | undefined | null
   Authorization?: string | undefined | null
+  useEndpoint?: boolean | undefined | null
   wipeOutputDir?: boolean | undefined | null
 }
 

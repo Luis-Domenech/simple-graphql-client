@@ -23,19 +23,26 @@ export const run_generator = async (config_path: string, env_path: string) => {
     let raw_sdl: string | null = ""
     let found = false
 
-    if (config.global.schema_path) {
-      // If schema path was provided, attempt to read it and if it checks out, we skip schema querying
-      raw_sdl = await read_schema(config, true)
-      if (!raw_sdl) logger.warn(`Error reading schema from schema path at ${config.global.schema_path}`)
-      else {
-        logger.warn(`Schema was found. Skipping schema query.`)
-        found = true
-      }
-    }
-    
-    if (!found) {
+    if (config.schema.use_endpoint) {
       const raw_sdl = await query_schema(config)
-      if (!raw_sdl) logger.error(`Error querying schema from endpoint at (${config.global.endpoint})`)
+
+      if (!raw_sdl) {
+        if (config.global.schema_path) {
+          const raw_sdl = await read_schema(config, true)
+          if (!raw_sdl) logger.error(`Error querying schema from endpoint at (${config.global.endpoint}) and there was an error reading the schema provided ad schemaPath set to (${config.global.schema_path}).`)
+          else {
+            if (config.schema.wipe_output_dir) {
+              logger.warn(`Config option (wipeOutputDir) was provided to schema config, so directory (${path.join(process.cwd(), config.schema.output_dir!)}) will be wiped`)
+              await remove_dir(path.join(process.cwd(), config.schema.output_dir!), false)
+            }
+        
+            await create_schema_file(raw_sdl!, config)
+          }
+        }
+        else {
+          logger.error(`Error querying schema from endpoint at (${config.global.endpoint}) and config (schemaPath) was not provided, so schema gen failed.`)
+        }
+      }
 
       if (config.schema.wipe_output_dir) {
         logger.warn(`Config option (wipeOutputDir) was provided to schema config, so directory (${path.join(process.cwd(), config.schema.output_dir!)}) will be wiped`)
@@ -43,6 +50,29 @@ export const run_generator = async (config_path: string, env_path: string) => {
       }
   
       await create_schema_file(raw_sdl!, config)
+    }
+    else {
+      if (config.global.schema_path) {
+        // If schema path was provided, attempt to read it and if it checks out, we skip schema querying
+        raw_sdl = await read_schema(config, true)
+        if (!raw_sdl) logger.warn(`Error reading schema from schema path at ${config.global.schema_path}`)
+        else {
+          logger.info(`Schema was found. Skipping schema query.`)
+          found = true
+        }
+      }
+      
+      if (!found) {
+        const raw_sdl = await query_schema(config)
+        if (!raw_sdl) logger.error(`Error querying schema from endpoint at (${config.global.endpoint})`)
+  
+        if (config.schema.wipe_output_dir) {
+          logger.warn(`Config option (wipeOutputDir) was provided to schema config, so directory (${path.join(process.cwd(), config.schema.output_dir!)}) will be wiped`)
+          await remove_dir(path.join(process.cwd(), config.schema.output_dir!), false)
+        }
+    
+        await create_schema_file(raw_sdl!, config)
+      }
     }
 
     logger.info(`Schema generator done`)
