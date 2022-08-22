@@ -1,3 +1,10 @@
+## [1.0.20](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.19...v1.0.20) (2022-08-22)
+
+
+### Bug Fixes
+
+* **config:** Added new config of useEndpoint ([7fa256a](https://github.com/Luis-Domenech/simple-graphql-client/commit/7fa256acc4980a84ed95711533e23a53acedb991))
+
 ## [1.0.19](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.18...v1.0.19) (2022-08-22)
 
 
