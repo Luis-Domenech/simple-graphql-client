@@ -1,3 +1,10 @@
+## [1.0.16](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.15...v1.0.16) (2022-08-22)
+
+
+### Bug Fixes
+
+* **install_dependencies:** Removed console log ([6fbc0b8](https://github.com/Luis-Domenech/simple-graphql-client/commit/6fbc0b8f9881768897df8ad227935caf5c520078))
+
 ## [1.0.15](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.14...v1.0.15) (2022-08-22)
 
 
