@@ -234,7 +234,9 @@ export const PRIMITIVES = [
   "DateTime",
   "Boolean",
   "JSON",
-  "Json"
+  "Json",
+  'BigInt',
+  'BigIntScalar',
 ]
 
 export const CONFIG_NAMES_TO_IGNORE = ["scalars", 'recursion_overrides']
