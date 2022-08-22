@@ -1078,7 +1078,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(2)}const are_valid: boolean[] = []`,
     `${i(2)}if (typeof selection_set === "object") {`,
     `${i(3)}await Promise.all(Object.keys(selection_set).map(async (selection) => {`,
-    `${i(4)}if (selection === "__typename") {`,
+    `${i(4)}if (selection !== "__typename") {`,
     `${i(5)}selections.push(selection)`,
     `${i(5)}if (typeof selection_set[selection] === "object") {`,
     `${i(6)}const val = await is_valid_operation_selection_set(operation, selection_set[selection], [...parent_queue, selection])`,

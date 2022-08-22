@@ -1,3 +1,17 @@
+## [1.0.13](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.12...v1.0.13) (2022-08-21)
+
+
+### Bug Fixes
+
+* **package:** Fixed typo ([a0bc69c](https://github.com/Luis-Domenech/simple-graphql-client/commit/a0bc69c52e2a96e2a5f920190e253e24b93c2652))
+
+## [1.0.12](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.11...v1.0.12) (2022-08-21)
+
+
+### Bug Fixes
+
+* **package:** fixed edge case in is_valid_operation_selection_set ([200e38c](https://github.com/Luis-Domenech/simple-graphql-client/commit/200e38c74550fc0af959591431ceaf71b3063608))
+
 ## [1.0.11](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.10...v1.0.11) (2022-08-21)
 
 
