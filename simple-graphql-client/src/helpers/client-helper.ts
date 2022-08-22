@@ -730,7 +730,7 @@ export const gen_client_types = async (data: GeneratorData, config: GeneratorCon
       `export type LoopFetchOverload = {`,
       // `${i(1)}<Operation extends keyof GraphQLOperationInputWithArguments, SelectionSet extends RawSelectionSet = OperationSelectionSet<Operation>>(operation: Operation, input: GraphQLOperationInputWithArguments[Operation], selection_set?: SelectionSet, options?: LoopFetchOptions): Promise<OperationFetchResponse<Operation, SelectionSet>>`,
       // `${i(1)}<Operation extends keyof GraphQLOperationInputWithoutArguments, SelectionSet extends RawSelectionSet = OperationSelectionSet<Operation>>(operation: Operation, selection_set?: SelectionSet, options?: LoopFetchOptions): Promise<OperationFetchResponse<Operation, SelectionSet>>`,
-      `${i(1)}<Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: Operation extends keyof GraphQLOperationInputWithArguments ? GraphQLOperationInput[Operation] : (Record<string, unknown> | null), selection_set?: SelectionSe | boolean | null | undefined, options?: LoopFetchOptions): Promise<BoundedOperationResponse<SelectionSet, GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>`,
+      `${i(1)}<Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: Operation extends keyof GraphQLOperationInputWithArguments ? GraphQLOperationInput[Operation] : (Record<string, unknown> | null), selection_set?: SelectionSet | boolean | null | undefined, options?: LoopFetchOptions): Promise<BoundedOperationResponse<SelectionSet, GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>`,
       `}`,
     ].join("\n"),
     [
@@ -1364,7 +1364,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
   add_import('fetch', 'node-fetch', true, custom_fetch_file_data!.imports)
 
   functions.push([
-    `export const operation_fetch: OperationFetchOverload = async <Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: any, selection_set?: SelectionSet, options?: OperationFetchOptions) => {  `,
+    `export const operation_fetch: OperationFetchOverload = async <Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: any, selection_set?: SelectionSet | boolean | null | undefined, options?: OperationFetchOptions) => {  `,
     `${i(1)}const operation_data = GRAPHQL_OPERATION_DATA[operation]`,
     `${i(1)}const sel_set = selection_set ? Object.keys(selection_set).length > 0 ? selection_set : operation_data.output_selection_sets : operation_data.output_selection_sets`,
     `${i(1)}const operation_name = operation_data.operation_name`,
@@ -1496,7 +1496,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
   add_relative_import('operation_fetch', 'capitalize_first_word', data, config)
 
   functions.push([
-    `export const loop_fetch: LoopFetchOverload = async <Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: any, selection_set?: SelectionSet, options?: LoopFetchOptions) => {  `,
+    `export const loop_fetch: LoopFetchOverload = async <Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: any, selection_set?: SelectionSet | boolean | null | undefined, options?: LoopFetchOptions) => {  `,
     `${i(1)}const opts = options ? options : {}`,
     `${i(1)}const fetch_delay = opts.delay ? opts.delay : LOOP_FETCH_DELAY`,
     `${i(1)}while (true) {`,
@@ -1530,7 +1530,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
   add_relative_import('loop_fetch', 'delay', data, config)
 
   functions.push([
-    `export const bounded_loop_fetch: BoundedLoopFetchOverload = async <Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: any, selection_set?: SelectionSet, options?: BoundedLoopFetchOptions): Promise<any> => {  `,
+    `export const bounded_loop_fetch: BoundedLoopFetchOverload = async <Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: any, selection_set?: SelectionSet | boolean | null | undefined, options?: BoundedLoopFetchOptions): Promise<any> => {  `,
     `${i(1)}const opts = options ? options : {}`,
     `${i(1)}const fetch_delay = opts.delay ? opts.delay : LOOP_FETCH_DELAY`,
     `${i(1)}const fetch_limit = opts.limit ? opts.limit : BOUNDED_LOOP_FETCH_LIMIT`,
