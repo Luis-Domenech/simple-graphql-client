@@ -1249,7 +1249,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(5)}}`,
     `${i(4)}}`,
     `${i(3)}}`,
-    `${i(3)}else if (selection_set[selection] === true) {operation_request_query.push(indent(\`\${selection}\`, rec))`,
+    `${i(3)}else if (selection_set[selection] === true) {`,
     `${i(4)}// Check if type of the field is a primitive. If that's the case, add the field`,
     `${i(4)}const field_type = recurse_operation_types(selection, GRAPHQL_OPERATION_DATA[operation]['output_types'], [...parent_queue, selection])`,
     `${i(4)}if (!field_type) return // If at recursion limit, don't do anything else`,
