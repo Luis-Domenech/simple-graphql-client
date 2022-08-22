@@ -231,6 +231,7 @@ export const PRIMITIVES = [
   "GraphQLJSONObject",
   "GraphQLByte",
   "Date",
+  "DateTime",
   "Boolean",
   "JSON",
   "Json"

@@ -2,7 +2,7 @@ import { is_in, match_first, stringify } from "lfd-utils"
 import path from "node:path"
 import { CLIENT_GENERATOR_DIRS, GRAPHQL_ROOT_OPERATIONS, OPERATION_DATA_AUTO_GENERATED_COMMENT, REGEX, TO_REMOVE_STRING } from "../constants.js"
 import { ClientGeneratorExport, FileData, GeneratorConfig, GeneratorData, ImportData } from "../types.js"
-import { add_import, add_imports, add_relative_import, gen_fields_with_args_as_type, gen_fields_with_response_as_type, gen_imports, get_type_name, Indent, logger, gen_data_fields, write_format_file } from "../utils/index.js"
+import { add_import, add_imports, add_relative_import, gen_fields_with_args_as_type, gen_fields_with_response_as_type, gen_imports, get_type_name, Indent, logger, gen_data_fields, write_format_file, gen_primitive_object_types } from "../utils/index.js"
 
 // These objects are constructs filled with extremely helpful data from operations
 // These objects are essential to create the type-safe fetch client functions
@@ -806,6 +806,11 @@ export const gen_client_contants = async (data: GeneratorData, config: Generator
   constants.push(`export const USE_CONVENTIONS = ${config.global.use_conventions}`)
   constants.push(`export const INDENT_SPACES = ${config.global.indent_spaces}`)
 
+  const all_primitives_types = (await gen_primitive_object_types(data, config)).map(p => `'${p}'`)
+
+  constants.push(`export const ALL_PRIMITIVES = [${all_primitives_types.join(", ")}]`)
+
+
   // if (data.schema_data.union_types) {
   //   if (data.schema_data.union_types.length > 0) {
   //     const fields: string[] = []
@@ -1253,8 +1258,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(4)}// Check if type of the field is a primitive. If that's the case, add the field`,
     `${i(4)}const field_type = recurse_operation_types(selection, GRAPHQL_OPERATION_DATA[operation]['output_types'], [...parent_queue, selection])`,
     `${i(4)}if (!field_type) return // If at recursion limit, don't do anything else`,
-    `${i(4)}const primitives = ["String", "ID", "Int", "Float", "DecimalScalar", "GraphQLBigInt", "GraphQLJSONObject", "GraphQLByte", "Date", "Boolean", "DateTime", "JSON", "Json"]`,
-    `${i(4)}if (contains(field_type, primitives)) operation_request_query.push(indent(\`\${selection}\`, rec))`,
+    `${i(4)}if (contains(field_type, ALL_PRIMITIVES)) operation_request_query.push(indent(\`\${selection}\`, rec))`,
     `${i(3)}}`,
     `${i(2)}})`,
     `${i(2)}const curr_line = operation_request_query[operation_request_query.length - 1]`,
@@ -1279,6 +1283,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
   })
 
   add_relative_import('gen_operation_request_query', 'RECURSION_LIMIT_OVERRIDES', data, config)
+  add_relative_import('gen_operation_request_query', 'ALL_PRIMITIVES', data, config)
   // add_relative_import('gen_operation_request_query', 'OBJECT_RECURSION_LIMIT', data, config)
   // add_relative_import('gen_operation_request_query', 'GRAPHQL_UNION', data, config)
   add_relative_import('gen_operation_request_query', 'indent', data, config)

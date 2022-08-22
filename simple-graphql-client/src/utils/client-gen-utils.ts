@@ -502,3 +502,48 @@ export const gen_data_fields = async (field: FieldData | FieldArgumentData, add_
 
 //   return typeof to_return === "object" ? Object.keys(to_return).length > 0 ? to_return : default_to_return_value : to_return
 // }
+
+// Idea is to go through every object type and determine if the object is a primitive
+export const gen_primitive_object_types = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
+  const primitives: string[] = []
+
+  if (data.schema_data.enum_types) {
+    await Promise.all(data.schema_data.enum_types.map(e => {
+      primitives.push(e.name)
+    }))
+  }
+
+  if (data.schema_data.union_types) {
+    await Promise.all(data.schema_data.union_types.map(async (u) => {
+      if (u.member_types) {
+        if (u.member_types.length > 0) {
+          const primitive_members: string[] = []
+          const members = u.member_types.length
+          await Promise.all(u.member_types.map(async (member) => {
+            if (is_in(member, PRIMITIVES)) primitive_members.push(member)
+          }))
+
+          if (primitive_members.length === members) primitives.push(u.name)
+        }
+      }
+    }))
+  }
+
+  if (data.schema_data.scalar_types) {
+    await Promise.all(data.schema_data.scalar_types.map(s => {
+      if (config.types.scalars) {
+        if (config.types.scalars.size > 0) {
+          const scalar_override = config.types.scalars.get(s.name)
+
+          if (scalar_override) {
+            const override = scalar_override.override
+            if (is_in(override, PRIMITIVES)) primitives.push(s.name)
+            else if (is_in(override, primitives)) primitives.push(s.name)
+          }
+        }
+      }
+    }))
+  }
+
+  return [...PRIMITIVES, ...primitives]
+}
