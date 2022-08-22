@@ -5108,8 +5108,8 @@ __metadata:
   linkType: hard
 
 "lfd-graphql-client@file:../../../simple-graphql-client::locator=backend%40workspace%3Atests%2Fbackend%2Fcommonjs":
-  version: 1.0.13
-  resolution: "lfd-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=9e8776&locator=backend%40workspace%3Atests%2Fbackend%2Fcommonjs"
+  version: 1.0.14
+  resolution: "lfd-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=8d0cce&locator=backend%40workspace%3Atests%2Fbackend%2Fcommonjs"
   dependencies:
     envsub: ^4.0.7
     graphql: ^16.5.0
@@ -5123,13 +5123,13 @@ __metadata:
     sgc: ./dist/bin.js
     sgc-codegen: ./dist/bin.js
     simple-graphql-client: ./dist/bin.js
-  checksum: 7416d0754415291e76c5fa72a5f9e1d09c4eeb14e5c1b620d3bcb03607d9b408d9a1cd5bba1b683efa610eff313c886cc845f0196b2bc1200279123476a248d8
+  checksum: 51d1895925964ede44c7cb790768e29b4c3a7398358d9976d27d56332e9c3ab6596cf5bd3fab625bb7e4f416a3e97d63f7a1a01512f303bcc36dd171f6bc22ec
   languageName: node
   linkType: hard
 
 "lfd-graphql-client@file:../../../simple-graphql-client::locator=esm%40workspace%3Atests%2Fbackend%2Fesm":
-  version: 1.0.13
-  resolution: "lfd-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=9e8776&locator=esm%40workspace%3Atests%2Fbackend%2Fesm"
+  version: 1.0.14
+  resolution: "lfd-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=8d0cce&locator=esm%40workspace%3Atests%2Fbackend%2Fesm"
   dependencies:
     envsub: ^4.0.7
     graphql: ^16.5.0
@@ -5143,7 +5143,7 @@ __metadata:
     sgc: ./dist/bin.js
     sgc-codegen: ./dist/bin.js
     simple-graphql-client: ./dist/bin.js
-  checksum: 7416d0754415291e76c5fa72a5f9e1d09c4eeb14e5c1b620d3bcb03607d9b408d9a1cd5bba1b683efa610eff313c886cc845f0196b2bc1200279123476a248d8
+  checksum: 51d1895925964ede44c7cb790768e29b4c3a7398358d9976d27d56332e9c3ab6596cf5bd3fab625bb7e4f416a3e97d63f7a1a01512f303bcc36dd171f6bc22ec
   languageName: node
   linkType: hard
 
