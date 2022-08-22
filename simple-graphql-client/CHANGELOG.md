@@ -1,3 +1,10 @@
+## [1.0.17](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.16...v1.0.17) (2022-08-22)
+
+
+### Bug Fixes
+
+* **functions:** Operation functions can now accept true as a selection set ([4ea0269](https://github.com/Luis-Domenech/simple-graphql-client/commit/4ea0269fcdde05f05342ed64bf1e592282d5fa43))
+
 ## [1.0.16](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.15...v1.0.16) (2022-08-22)
 
 
