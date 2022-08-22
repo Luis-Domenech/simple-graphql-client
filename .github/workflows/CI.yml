@@ -25,7 +25,7 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install dependencies
-        run: yarn workspace root-workspace-0b6124 install --immutable && yarn workspace lfd-graphql-client install --immutable
+        run: yarn workspace lfd-graphql-client install --immutable
       - name: Publish 🚀
         run: yarn deploy
         env:
