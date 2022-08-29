@@ -1,7 +1,7 @@
 {
     "private": true,
     "workspaces": [
-        "simple-graphql-client"
+        "lfd-graphql-client"
     ],
     "devDependencies": {
         "@commitlint/cli": "16.2.3",
@@ -13,11 +13,11 @@
     },
     "scripts": {
         "prepare": "husky install",
-        "build": "cd ./simple-graphql-client && yarn build",
+        "build": "cd ./lfd-graphql-client && yarn build",
         "backend-cjs-gen": "NODE_ENV=development yarn build && cd tests/backend/commonjs && yarn && yarn gen",
         "backend-esm-gen": "NODE_ENV=development yarn build && cd tests/backend/esm && yarn && yarn gen",
         "backend-test": "cd tests/backend/commonjs && yarn test",
-        "deploy": "cd simple-graphql-client && yarn && yarn deploy"
+        "deploy": "cd lfd-graphql-client && yarn && yarn deploy"
     },
     "packageManager": "yarn@3.2.2"
 }

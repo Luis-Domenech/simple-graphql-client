@@ -59,6 +59,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.2.3":
+  version: 4.2.3
+  resolution: "@tanstack/query-core@npm:4.2.3"
+  checksum: b37efdc32b1731575eba398eda3b7a4cd3ed25ee1032d5200124c37ab4e58711d310e2e29e9e51284553a7c03c85e55cf8da6833bc3b1e215e0e43e7399ab3ca
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "@tanstack/react-query@npm:4.2.3"
+  dependencies:
+    "@tanstack/query-core": 4.2.3
+    "@types/use-sync-external-store": ^0.0.3
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 0a38ae05271e1669c6efd5cc77608103b6dfde577ecdc88c3f0e72953aea11c102c9b5a49fa2ca822f260a68f9f9646c5e847e7d87c99117b2c2e3b1356cbc8b
+  languageName: node
+  linkType: hard
+
 "@tsconfig/node10@npm:^1.0.7":
   version: 1.0.9
   resolution: "@tsconfig/node10@npm:1.0.9"
@@ -91,6 +118,13 @@ __metadata:
   version: 17.0.21
   resolution: "@types/node@npm:17.0.21"
   checksum: 89dcd2fe82f21d3634266f8384e9c865cf8af49685639fbdbd799bdd1040480fb1e8eeda2d3b9fce41edbe704d2a4be9f427118c4ae872e8d9bb7cbeb3c41a94
+  languageName: node
+  linkType: hard
+
+"@types/use-sync-external-store@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@types/use-sync-external-store@npm:0.0.3"
+  checksum: 161ddb8eec5dbe7279ac971531217e9af6b99f7783213566d2b502e2e2378ea19cf5e5ea4595039d730aa79d3d35c6567d48599f69773a02ffcff1776ec2a44e
   languageName: node
   linkType: hard
 
@@ -145,10 +179,12 @@ __metadata:
   resolution: "backend@workspace:."
   dependencies:
     "@swc/wasm": ^1.2.236
+    "@tanstack/react-query": ^4.2.3
     "@types/node": 17.0.21
-    lfd-graphql-client: ../../../simple-graphql-client
+    lfd-graphql-client: ../../../lfd-graphql-client
     node-fetch: ^2.6.6
     regenerator-runtime: ^0.13.9
+    swr: ^1.3.0
     ts-node: ^10.9.1
     typescript: ^4.7.4
   languageName: unknown
@@ -341,32 +377,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lfd-graphql-client@file:../../../simple-graphql-client::locator=backend%40workspace%3A.":
-  version: 1.0.14
-  resolution: "lfd-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=b46304&locator=backend%40workspace%3A."
+"lfd-graphql-client@file:../../../lfd-graphql-client::locator=backend%40workspace%3A.":
+  version: 1.0.21
+  resolution: "lfd-graphql-client@file:../../../lfd-graphql-client#../../../lfd-graphql-client::hash=5b47e8&locator=backend%40workspace%3A."
   dependencies:
     envsub: ^4.0.7
     graphql: ^16.5.0
     js-yaml: ^4.1.0
-    lfd-utils: ^1.0.22
+    lfd-utils: ^1.0.25
     node-fetch: ^3.2.8
     prettier: 2.5.1
     simple-wasm-graphql-parser: ^1.0.5
     yargs: ^17.5.1
   bin:
-    sgc: ./dist/bin.js
-    sgc-codegen: ./dist/bin.js
-    simple-graphql-client: ./dist/bin.js
-  checksum: 8bb918530c87739860bc1aae47ad4bb15b4768304f4388167d3eba421857564d5a80a287a75d55319edba155046e06b22766b6daa784d8e26b3aeb785d161e08
+    lfd: ./dist/bin.js
+    lfd-gc: ./dist/bin.js
+    lfd-graphql-client: ./dist/bin.js
+  checksum: 2a6e4da6863adbc11e8ed395a20b141b32c64c7dd30990c0e33fd4f8b084e0ba03d58dfba1a0ce1bedd7d40549e8d6da3991bae8163a89fca7fe0a710515a93e
   languageName: node
   linkType: hard
 
-"lfd-utils@npm:^1.0.22":
-  version: 1.0.24
-  resolution: "lfd-utils@npm:1.0.24"
+"lfd-utils@npm:^1.0.25":
+  version: 1.0.25
+  resolution: "lfd-utils@npm:1.0.25"
   dependencies:
     chalk: ^5.0.1
-  checksum: e6ffb29eb6cdfb35e5d80bdaebf783fe878cfdb26e33f6c95ab4dc6fda15bbe3e0513721053c3c7c83b54a0e4538a96c1e570a7b9a6f83cb25468d3293dea0b3
+  checksum: dda93b0166733d546fcc2f9622ec257fc750c6be319a68770c8ef4456fe234f400f236478743455568f72d66b385996a4ba9ed6357079fd6d3c5c8e05f0e9123
   languageName: node
   linkType: hard
 
@@ -503,6 +539,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"swr@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "swr@npm:1.3.0"
+  peerDependencies:
+    react: ^16.11.0 || ^17.0.0 || ^18.0.0
+  checksum: e7a184f0d560e9c8be85c023cc8e65e56a88a6ed46f9394b301b07f838edca23d2e303685319a4fcd620b81d447a7bcb489c7fa0a752c259f91764903c690cdb
+  languageName: node
+  linkType: hard
+
 "tr46@npm:~0.0.3":
   version: 0.0.3
   resolution: "tr46@npm:0.0.3"
@@ -574,6 +619,15 @@ __metadata:
   bin:
     uglifyjs: bin/uglifyjs
   checksum: 20d1fcac05e74db949a9579a36f9a1af88430e590bc9c22410b76686035c55cef65247ca1935d2f6440c78928227684219c8b1ddfcd858213049cb2890821392
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "use-sync-external-store@npm:1.2.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
   languageName: node
   linkType: hard
 

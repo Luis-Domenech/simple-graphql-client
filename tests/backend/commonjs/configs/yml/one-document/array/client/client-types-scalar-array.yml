@@ -12,7 +12,7 @@ objectRecursionLimit: 5
 importsAsEsm: false
 prettierFormat: false
 useConventions: false
-
+typesDir: null
 generator:
   - client:
       outputDir: generated/sgc/client

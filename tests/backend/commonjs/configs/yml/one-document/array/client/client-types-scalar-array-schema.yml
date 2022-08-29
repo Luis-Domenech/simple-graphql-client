@@ -25,9 +25,9 @@ generator:
       addNull: true
       addUndefined: true
       scalars:
-        - Lang: { override: 'Record<Language, string>' }
-        - Langs: { override: 'Record<Language, string[]>' }
-        - MenuScalar: { override: 'Menu' }
+        - Lang: { override: Record<Language, string> }
+        - Langs: { override: Record<Language, string[]> }
+        - MenuScalar: { override: Menu }
         - DecimalScalar: { override: 'Prisma.Decimal', import: "Prisma", from: "@prisma/client", isDefault: false }
   - schema:
       outputDir: graphql
