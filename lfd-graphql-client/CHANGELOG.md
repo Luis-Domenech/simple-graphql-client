@@ -1,3 +1,10 @@
+## [1.0.23](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.22...v1.0.23) (2022-08-29)
+
+
+### Bug Fixes
+
+* **installPackages:** Fixed edge case where error was thrown on warnings while installing dependencies ([7ab8591](https://github.com/Luis-Domenech/lfd-graphql-client/commit/7ab8591abdb02805b9c7ef11ee15e354572245b5))
+
 ## [1.0.22](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.21...v1.0.22) (2022-08-29)
 
 
