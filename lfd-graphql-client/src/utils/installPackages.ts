@@ -27,8 +27,8 @@ export const install_dependencies = async (dependencies: Map<string, DependencyD
     else {
       const spawn = spawnSync(`${dep.is_dev ? dev_package_manager : package_manager} ${dep.version ? dep.dependency + "@^" + dep.version : dep.dependency}`, [], { shell: true, stdio: ['inherit', 'ignore', 'pipe'] })
       if (spawn.stderr.length > 0) {
-        logger.warn(spawn.stderr)
-        logger.error(`There was an error installing the dependency`)
+        if (spawn.stderr.toString().toLowerCase().includes('error') && spawn.stderr.toString().toLowerCase().includes('error')) logger.error(`There was an error installing the dependency`)
+        else logger.info(`Dependency installed`)
       }
       else logger.info(`Dependency installed`)
     }
