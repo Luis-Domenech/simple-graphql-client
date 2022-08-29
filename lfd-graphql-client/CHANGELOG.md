@@ -1,3 +1,10 @@
+## [1.0.22](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.21...v1.0.22) (2022-08-29)
+
+
+### Bug Fixes
+
+* **package:** Fixed a bunch of issues and finished readme ([713f3cf](https://github.com/Luis-Domenech/lfd-graphql-client/commit/713f3cf1eb8c77deb8cba3417f1d376d3526a4d9))
+
 ## [1.0.21](https://github.com/Luis-Domenech/simple-graphql-client/compare/v1.0.20...v1.0.21) (2022-08-22)
 
 
