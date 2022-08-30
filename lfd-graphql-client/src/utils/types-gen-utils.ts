@@ -1,7 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import readline from 'readline'
-import events from 'events'
 
 import { FieldData, FieldArgumentData } from 'simple-wasm-graphql-parser'
 import { logger, REGEX, TYPE_FILES_TO_READ } from "../constants.js"
@@ -443,21 +441,19 @@ const traverse_dir = (dir: string) => unfold((next: any, done: any, [ path = Non
   ), relative_paths (dir)
 )
 
-export const override_types_data = async (data: GeneratorData, config: GeneratorConfig) => {
+export const override_types_data = (data: GeneratorData, config: GeneratorConfig) => {
   if (config.global.types_dir) {
     try {
-      let files =  traverse_dir(path.join(process.cwd(), config.global.types_dir)) as string[]
+      let files = traverse_dir(path.join(process.cwd(), config.global.types_dir)) as string[]
 
       // Filter out all files that are not js or ts files
       files = files.filter(file => ends_with_any(file, TYPE_FILES_TO_READ))
 
-      files.map(async (filename) => {
-        const rl = readline.createInterface({
-          input: fs.createReadStream(filename),
-          crlfDelay: Infinity
-        })
-      
-        rl.on('line', (line) => {
+      files.map((filename) => {
+        const file = fs.readFileSync(filename)
+        const lines = file.toString().replace(REGEX.match_new_line, '\n').split('\n')
+        
+        for (const line of lines) {
           if (line.includes('export') && !line.replace(REGEX.match_whitespace, "").startsWith('//')) { // Ignore case for `// export etc...`
             let typename = get_type_name(line, 'class')
             if (!typename) typename = get_type_name(line, 'const')
@@ -487,9 +483,7 @@ export const override_types_data = async (data: GeneratorData, config: Generator
               })
             }
           }
-        })
-        
-        await events.once(rl, 'close')
+        }
       })
     }
     catch(e: any) {

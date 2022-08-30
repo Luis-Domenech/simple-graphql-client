@@ -184,7 +184,7 @@ export const gen_import_data = async (data: GeneratorData, config: GeneratorConf
   }
 
   // If user provided a types_dir, then we use those instead, so override those import data here
-  await override_types_data(data, config)
+  override_types_data(data, config)
 }
 
 export const gen_enums = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {

@@ -63,7 +63,8 @@ export const DEFAULT_CONFIG: GeneratorConfig = {
     add_null: false,
     add_undefined: false,
     scalars: new Map([
-      [ "DecimalScalar", {override: 'Prisma.Decimal', new_import: "Prisma", from_import: "@prisma/client", is_default: false} ],
+      [ "Decimal", {override: 'Prisma.Decimal', import: "Prisma", from: "@prisma/client", is_default: false} ],
+      [ "DecimalScalar", {override: 'Prisma.Decimal', import: "Prisma", from: "@prisma/client", is_default: false} ],
       [ "DateTime", {override: 'Date'} ],
     ]),
     wipe_output_dir: false
@@ -115,6 +116,7 @@ export const REGEX = {
   match_one_colon: /(:)/gm,
   match_comment_or_literal_char: /(\/\*)|(`)/gm,
   match_back_slash: /(\\)/gm,
+  match_new_line: /[\r\n]/gm,
   match_class: (className: string) => new RegExp(`(export)+\\s+(class)+\\s+(${className})+\\s*({)`, 'gm'),
   match_exact_type: (exactTypeName: string) => new RegExp(`(?<![^\\s\\[<])${exactTypeName}(?![^\\s>)\\]])`, 'gm')
 }
