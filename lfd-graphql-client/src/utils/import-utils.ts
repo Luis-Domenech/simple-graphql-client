@@ -123,7 +123,7 @@ export const gen_imports = (imports: Map<string, ImportData>, as_const = false):
 
       raw_import += ` from '${i.from}'`
 
-      raw_imports.push(raw_import)
+      raw_imports.push(raw_import.replace(/(\\)/gm, "/"))
     }
   }
 
