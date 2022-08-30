@@ -34,7 +34,7 @@
     "envsub": "^4.0.7",
     "graphql": "^16.5.0",
     "js-yaml": "^4.1.0",
-    "lfd-utils": "^1.0.25",
+    "lfd-utils": "^1.0.26",
     "node-fetch": "^3.2.8",
     "prettier": "2.5.1",
     "simple-wasm-graphql-parser": "^1.0.5",

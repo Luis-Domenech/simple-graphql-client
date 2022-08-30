@@ -5088,7 +5088,7 @@ __metadata:
     graphql: ^16.5.0
     jest: 27.4.7
     js-yaml: ^4.1.0
-    lfd-utils: ^1.0.25
+    lfd-utils: ^1.0.26
     node-fetch: ^3.2.8
     prettier: 2.5.1
     semantic-release: ^18.0.1
@@ -5104,12 +5104,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"lfd-utils@npm:^1.0.25":
-  version: 1.0.25
-  resolution: "lfd-utils@npm:1.0.25"
+"lfd-utils@npm:^1.0.26":
+  version: 1.0.26
+  resolution: "lfd-utils@npm:1.0.26"
   dependencies:
     chalk: ^5.0.1
-  checksum: dda93b0166733d546fcc2f9622ec257fc750c6be319a68770c8ef4456fe234f400f236478743455568f72d66b385996a4ba9ed6357079fd6d3c5c8e05f0e9123
+  checksum: 53eee4298c6c749b15b8a79a9c9bc2e1cd8ad5a4efe32e27a143e273c4cecf44339dd79c0e568edab7e4bd4abbce5ad37c181582ee741032b4dd24d0c7b7d176
   languageName: node
   linkType: hard
 

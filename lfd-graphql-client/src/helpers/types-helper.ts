@@ -477,7 +477,7 @@ export const create_enum_files = async (enums: string[] | null, data: GeneratorD
   const exports: string[] = []
 
   let name: string
-
+  
   await Promise.all(enums.map(async (e) => {
     if (config.types.enum_as_const) {
       name = get_type_name(e, "const")

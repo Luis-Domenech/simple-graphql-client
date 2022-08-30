@@ -492,8 +492,8 @@ export const override_types_data = async (data: GeneratorData, config: Generator
         await events.once(rl, 'close')
       })
     }
-    catch(e) {
-      if ((e as string).includes("call stack")) logger.error(`Maximum call stack exceeded reading all files set on typesDir (${path.join(process.cwd(), config.global.types_dir)})`)
+    catch(e: any) {
+      if (e.toString().includes("call stack")) logger.error(`Maximum call stack exceeded reading all files set on typesDir (${path.join(process.cwd(), config.global.types_dir)})`)
       logger.error(`Error reading typesDir set to (${path.join(process.cwd(), config.global.types_dir)})`)
     }
   }
