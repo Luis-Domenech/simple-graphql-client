@@ -89,7 +89,7 @@ const run_env_sub = async (config_file_path: string, env_path: string) => {
     system: true 
   }
   
-  const { outputContents } = await envsub.default({templateFile: config_file_path, outputFile: process.platform === 'win32' ? 'NUL:' : '/dev/null', options: options})
+  const { outputContents } = await envsub.default({templateFile: config_file_path, outputFile: process.platform === 'win32' ? 'NUL' : '/dev/null', options: options})
 
   return outputContents
 }
