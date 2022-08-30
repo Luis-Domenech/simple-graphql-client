@@ -1,3 +1,10 @@
+## [1.0.27](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.26...v1.0.27) (2022-08-30)
+
+
+### Bug Fixes
+
+* **package:** Updated lfd-utils dependency ([f44d4f0](https://github.com/Luis-Domenech/lfd-graphql-client/commit/f44d4f066ed7f8292bad05db2d0f2c4f14ffdd0a))
+
 ## [1.0.26](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.25...v1.0.26) (2022-08-30)
 
 
