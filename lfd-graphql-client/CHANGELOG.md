@@ -1,3 +1,10 @@
+## [1.0.24](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.23...v1.0.24) (2022-08-30)
+
+
+### Bug Fixes
+
+* **package:** Fixed issue with Windows and a typo ([d575129](https://github.com/Luis-Domenech/lfd-graphql-client/commit/d57512954348dbecaa1bc4264c0f2250eda8e536))
+
 ## [1.0.23](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.22...v1.0.23) (2022-08-29)
 
 
