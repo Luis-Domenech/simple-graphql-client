@@ -1,3 +1,10 @@
+## [1.0.28](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.27...v1.0.28) (2022-08-30)
+
+
+### Bug Fixes
+
+* **package:** Fixed issues with typesDir logic ([dab71f8](https://github.com/Luis-Domenech/lfd-graphql-client/commit/dab71f8c01f202b054d433599aaaa0f0f656e760))
+
 ## [1.0.27](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.26...v1.0.27) (2022-08-30)
 
 
