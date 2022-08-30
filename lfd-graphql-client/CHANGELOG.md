@@ -1,3 +1,10 @@
+## [1.0.25](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.24...v1.0.25) (2022-08-30)
+
+
+### Bug Fixes
+
+* **package:** Fixed windows import issues ([cabf87f](https://github.com/Luis-Domenech/lfd-graphql-client/commit/cabf87fc7ba718925807deab30b876826885b522))
+
 ## [1.0.24](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.23...v1.0.24) (2022-08-30)
 
 
