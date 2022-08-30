@@ -1710,7 +1710,7 @@ export const create_client_types_files = async (types: string[], data: Generator
     
     await add_imports(temp_file_data!.imports, imports)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js") : temp_file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : temp_file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const imports_to_add = gen_imports(imports)
@@ -1750,7 +1750,7 @@ export const create_client_constants_files = async (constants: string[], data: G
     
     await add_imports(temp_file_data!.imports, imports)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js") : temp_file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : temp_file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const imports_to_add = gen_imports(imports)
@@ -1792,7 +1792,7 @@ export const create_client_data_files = async (operation_data: string[], data: G
     
     await add_imports(temp_file_data!.imports, imports)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js") : temp_file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : temp_file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const imports_to_add = gen_imports(imports)
@@ -1832,7 +1832,7 @@ export const create_client_utils_files = async (utils: string[], data: Generator
     
     await add_imports(temp_file_data!.imports, imports)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js") : temp_file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : temp_file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const imports_to_add = gen_imports(imports)
@@ -1872,7 +1872,7 @@ export const create_client_function_files = async (functions: string[], data: Ge
     
     await add_imports(temp_file_data!.imports, imports)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js") : temp_file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : temp_file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const imports_to_add = gen_imports(imports, !config.global.imports_as_esm)
@@ -1912,7 +1912,7 @@ export const create_client_hooks_files = async (hooks: string[], data: Generator
     
     await add_imports(temp_file_data!.imports, imports)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js") : temp_file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : temp_file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const imports_to_add = gen_imports(imports)
@@ -1938,7 +1938,7 @@ export const create_client_generator_index_file = async (exports: ClientGenerato
   const index_file: string[] = []
   const index_file_name = config.global.imports_as_esm ? 'index.js' : 'index'
 
-  exports.map(e => index_file.push(`export * from './${path.join(e, index_file_name)}'`))
+  exports.map(e => index_file.push(`export * from './${path.join(e, index_file_name).replace(REGEX.match_back_slash, "/")}'`))
   
   await write_format_file(config.client.output_dir!, "index.ts", index_file, config)
 }

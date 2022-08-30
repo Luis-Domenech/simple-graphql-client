@@ -2,7 +2,7 @@ import path from "path"
 import { parse_schema_for_typescript, SchemaData } from "simple-wasm-graphql-parser"
 import { FileData, GeneratorConfig, GeneratorData, ImportData, TypesGeneratorExport } from "../types.js"
 import { Indent, gen_fields as gen_fields, write_format_file, gen_description, convert_scalar_to_type, add_relative_import, gen_imports, get_type_name, add_imports, override_types_data } from "../utils/index.js"
-import { GRAPHQL_ROOT_OPERATIONS, logger, RESPONSE_ENDINGS, TYPES_GENERATOR_DIRS } from "../constants.js"
+import { GRAPHQL_ROOT_OPERATIONS, logger, REGEX, RESPONSE_ENDINGS, TYPES_GENERATOR_DIRS } from "../constants.js"
 import { is_in, ends_with_any } from "lfd-utils"
 
 export const run_parser = async (raw_sdl: string, data: GeneratorData) => {  
@@ -502,7 +502,7 @@ export const create_enum_files = async (enums: string[] | null, data: GeneratorD
 
     await write_format_file(file_data!.file_dir, file_data!.file_name, contents, config)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js") : file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   // Removes all duplicates, whic is good for cases like scalars which are all on just one file
@@ -538,7 +538,7 @@ export const create_input_files = async (inputs: string[] | null, data: Generato
 
     await write_format_file(file_data!.file_dir, file_data!.file_name, contents, config)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js") : file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const index_file = exports.filter((e, pos) => exports.indexOf(e) === pos).join("\n")
@@ -573,7 +573,7 @@ export const create_interfaces_files = async (interfaces: string[] | null, data:
 
     await write_format_file(file_data!.file_dir, file_data!.file_name, contents, config)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js") : file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const index_file = exports.filter((e, pos) => exports.indexOf(e) === pos).join("\n")
@@ -608,7 +608,7 @@ export const create_object_files = async (objects: string[] | null, data: Genera
 
     await write_format_file(file_data!.file_dir, file_data!.file_name, contents, config)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js") : file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const index_file = exports.filter((e, pos) => exports.indexOf(e) === pos).join("\n")
@@ -643,7 +643,7 @@ export const create_operation_files = async (operations: string[] | null, data: 
 
     await write_format_file(file_data!.file_dir, file_data!.file_name, contents, config)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js") : file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const index_file = exports.filter((e, pos) => exports.indexOf(e) === pos).join("\n")
@@ -678,7 +678,7 @@ export const create_outputs_files = async (outputs: string[] | null, data: Gener
 
     await write_format_file(file_data!.file_dir, file_data!.file_name, contents, config)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js") : file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const index_file = exports.filter((e, pos) => exports.indexOf(e) === pos).join("\n")
@@ -710,7 +710,7 @@ export const create_scalars_files = async (scalars: string[] | null, data: Gener
 
     await add_imports(temp_file_data!.imports, imports)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js") : temp_file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : temp_file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const imports_to_add = gen_imports(imports)
@@ -750,7 +750,7 @@ export const create_unions_files = async (unions: string[] | null, data: Generat
     
     await add_imports(temp_file_data!.imports, imports)
 
-    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js") : temp_file_data!.file_name.replace(".ts", "")}'`)
+    exports.push(`export * from './${config.global.imports_as_esm ? temp_file_data!.file_name.replace(".ts", ".js").replace(REGEX.match_back_slash, "/") : temp_file_data!.file_name.replace(".ts", "").replace(REGEX.match_back_slash, "/")}'`)
   }))
 
   const imports_to_add = gen_imports(imports)
@@ -776,7 +776,7 @@ export const create_types_generator_index_file = async (exports: TypesGeneratorE
   const index_file: string[] = []
   const index_file_name = config.global.imports_as_esm ? 'index.js' : 'index'
 
-  exports.map(e => index_file.push(`export * from './${path.join(e, index_file_name)}'`))
+  exports.map(e => index_file.push(`export * from './${path.join(e, index_file_name).replace(REGEX.match_back_slash, "/")}'`))
   
   await write_format_file(config.types.output_dir!, "index.ts", index_file, config)
 }
