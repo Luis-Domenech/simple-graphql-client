@@ -187,7 +187,7 @@ export const gen_import_data = async (data: GeneratorData, config: GeneratorConf
   override_types_data(data, config)
 }
 
-export const gen_enums = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {
+export const gen_enums = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
   if (data.schema_data.enum_types) {
     const i = new Indent(config).indent
 
@@ -249,10 +249,10 @@ export const gen_enums = async (data: GeneratorData, config: GeneratorConfig): P
     return enums.filter(Boolean) 
   }
 
-  return null
+  return []
 }
 
-export const gen_inputs = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {
+export const gen_inputs = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
   const ind = new Indent(config).indent
   
   if (data.schema_data.input_object_types) {
@@ -281,10 +281,10 @@ export const gen_inputs = async (data: GeneratorData, config: GeneratorConfig): 
 
     return inputs.filter(Boolean)
   }
-  return null
+  return []
 }
 
-export const gen_interfaces = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {
+export const gen_interfaces = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
   const ind = new Indent(config).indent
   
   if (data.schema_data.interface_types) {
@@ -315,10 +315,10 @@ export const gen_interfaces = async (data: GeneratorData, config: GeneratorConfi
 
     return interfaces.filter(Boolean)
   }
-  return null
+  return []
 }
 
-export const gen_objects = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {
+export const gen_objects = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
   const i = new Indent(config).indent
   
   if (data.schema_data.object_types) {
@@ -352,10 +352,10 @@ export const gen_objects = async (data: GeneratorData, config: GeneratorConfig):
 
     return objects.filter(Boolean)
   }
-  return null
+  return []
 }
 
-export const gen_operations = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {
+export const gen_operations = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
   const i = new Indent(config).indent
   
   if (data.schema_data.object_types) {
@@ -387,10 +387,10 @@ export const gen_operations = async (data: GeneratorData, config: GeneratorConfi
 
     return operations.filter(Boolean)
   }
-  return null
+  return []
 }
 
-export const gen_outputs = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {
+export const gen_outputs = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
   const i = new Indent(config).indent
   
   if (data.schema_data.object_types) {
@@ -422,10 +422,10 @@ export const gen_outputs = async (data: GeneratorData, config: GeneratorConfig):
 
     return outputs.filter(Boolean)
   }
-  return null
+  return []
 }
 
-export const gen_scalars = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {
+export const gen_scalars = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
   if (data.schema_data.scalar_types) {
     const scalars = await Promise.all(data.schema_data.scalar_types.map(async (s) => {
       const file_data = data.file_data.get(s.name)
@@ -442,10 +442,10 @@ export const gen_scalars = async (data: GeneratorData, config: GeneratorConfig):
 
     return scalars.filter(Boolean)
   }
-  return null
+  return []
 }
 
-export const gen_unions = async (data: GeneratorData, config: GeneratorConfig): Promise<string[] | null> => {
+export const gen_unions = async (data: GeneratorData, config: GeneratorConfig): Promise<string[]> => {
   if (data.schema_data.union_types) {
     const unions = await Promise.all(data.schema_data.union_types.map(async (u) => {
       const file_data = data.file_data.get(u.name)
@@ -466,7 +466,7 @@ export const gen_unions = async (data: GeneratorData, config: GeneratorConfig): 
 
     return unions.filter(Boolean)
   }
-  return null
+  return []
 }
 
 

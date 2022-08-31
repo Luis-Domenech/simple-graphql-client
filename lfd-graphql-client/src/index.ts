@@ -134,14 +134,14 @@ export const run_generator = async (config_path: string, env_path: string, warni
     await create_unions_files(unions, data, config)
     
     const exports: TypesGeneratorExport[] = []
-    if (enums) exports.push("enums")
-    if (inputs) exports.push("inputs")
-    if (interfaces) exports.push("interfaces")
-    if (objects) exports.push("objects")
-    if (operations) exports.push("operations")
-    if (outputs) exports.push("outputs")
-    if (scalars) exports.push("scalars")
-    if (unions) exports.push("unions")
+    if (enums.length > 0) exports.push("enums")
+    if (inputs.length > 0) exports.push("inputs")
+    if (interfaces.length > 0) exports.push("interfaces")
+    if (objects.length > 0) exports.push("objects")
+    if (operations.length > 0) exports.push("operations")
+    if (outputs.length > 0) exports.push("outputs")
+    if (scalars.length > 0) exports.push("scalars")
+    if (unions.length > 0) exports.push("unions")
 
     await create_types_generator_index_file(exports, config)
 
