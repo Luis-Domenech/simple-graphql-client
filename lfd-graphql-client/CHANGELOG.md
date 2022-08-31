@@ -1,3 +1,10 @@
+## [1.0.32](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.31...v1.0.32) (2022-08-31)
+
+
+### Bug Fixes
+
+* **client:** Fixed some issues with type inference for fetch responses ([488fac3](https://github.com/Luis-Domenech/lfd-graphql-client/commit/488fac391c5c3d9241135ad5b013a6310e8416d1))
+
 ## [1.0.31](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.30...v1.0.31) (2022-08-31)
 
 
