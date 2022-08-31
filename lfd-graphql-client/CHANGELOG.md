@@ -1,3 +1,10 @@
+## [1.0.29](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.28...v1.0.29) (2022-08-31)
+
+
+### Bug Fixes
+
+* **package:** Fixed some type inference issues on BoundedOperationResponse_ ([ddc47b2](https://github.com/Luis-Domenech/lfd-graphql-client/commit/ddc47b2ceaf28004bba15661b52918d0288fca8b))
+
 ## [1.0.28](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.27...v1.0.28) (2022-08-30)
 
 
