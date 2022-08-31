@@ -1,3 +1,10 @@
+## [1.0.31](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.30...v1.0.31) (2022-08-31)
+
+
+### Bug Fixes
+
+* **package:** Fixed edge case on types generator ([805fae8](https://github.com/Luis-Domenech/lfd-graphql-client/commit/805fae88d8a1aeec6be98100285fb9a27fa91a18))
+
 ## [1.0.30](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.29...v1.0.30) (2022-08-31)
 
 
