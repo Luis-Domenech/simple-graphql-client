@@ -33,8 +33,8 @@ export const install_dependencies = async (dependencies: Map<string, DependencyD
       else logger.info(`Dependency installed`)
     }
 
-    // Don't install types if installing node-fetch@2.6.6
-    if (config.global.install_types && !(dep.dependency === "node-fetch" && !config.global.imports_as_esm)) {
+    // Don't install types if installing node-fetch@2.6.6 and not install types if dependency starts with @
+    if (config.global.install_types && !(dep.dependency === "node-fetch" && !config.global.imports_as_esm) && !dep.dependency.startsWith('@')) {
       logger.info(`Attempting to install types -> @types/${dep.dependency}`)
       const has_types = package_json.includes(`"@types/${dep.dependency}"`)
       if (has_types) {
