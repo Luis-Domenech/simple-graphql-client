@@ -186,19 +186,17 @@ export const gen_client_types = async (data: GeneratorData, config: GeneratorCon
     }
     client_types = [
       ...client_types,
-      fields.length > 1 ?
       [
         `type TypeRecursionOverride = {`,
         fields.join("\n"),
         `}`
-      ].join("\n") :
-      'type TypeRecursionOverride = object'
+      ].join("\n")
     ]
   }
   else {
     client_types = [
       ...client_types,
-      `type TypeRecursionOverride = {}`
+      `type TypeRecursionOverride = object`
     ]
   }
 
