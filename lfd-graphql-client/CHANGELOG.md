@@ -1,3 +1,10 @@
+## [1.0.30](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.29...v1.0.30) (2022-08-31)
+
+
+### Bug Fixes
+
+* **installPackages:** Types for dependency with @ won't be installed now ([ec8ef5b](https://github.com/Luis-Domenech/lfd-graphql-client/commit/ec8ef5bee8df3647235aecd1405fc83f0b5ee269))
+
 ## [1.0.29](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.28...v1.0.29) (2022-08-31)
 
 
