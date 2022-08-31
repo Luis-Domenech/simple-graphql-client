@@ -1,3 +1,10 @@
+## [1.0.33](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.32...v1.0.33) (2022-08-31)
+
+
+### Bug Fixes
+
+* **client:** Fixed TypeRecursionOverride issue when no overrides are given ([088762a](https://github.com/Luis-Domenech/lfd-graphql-client/commit/088762ac84dd9d7525c3c3247b6c5cc4b85348ba))
+
 ## [1.0.32](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.31...v1.0.32) (2022-08-31)
 
 
