@@ -1,3 +1,10 @@
+## [1.0.37](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.36...v1.0.37) (2022-09-01)
+
+
+### Bug Fixes
+
+* **package:** Fixed typo ([51dffdb](https://github.com/Luis-Domenech/lfd-graphql-client/commit/51dffdb7d0faf158e147b1596e654462e8776350))
+
 ## [1.0.36](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.35...v1.0.36) (2022-09-01)
 
 
