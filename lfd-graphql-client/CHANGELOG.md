@@ -1,3 +1,10 @@
+## [1.0.34](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.33...v1.0.34) (2022-09-01)
+
+
+### Bug Fixes
+
+* **package:** Fixed missing import issue and updated useOperationSWR ([ebff7a7](https://github.com/Luis-Domenech/lfd-graphql-client/commit/ebff7a7e3a236f30d14231d5f57ad18c3bf57af4))
+
 ## [1.0.33](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.32...v1.0.33) (2022-08-31)
 
 
