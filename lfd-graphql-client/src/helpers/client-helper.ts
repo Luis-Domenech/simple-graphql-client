@@ -830,6 +830,7 @@ export const gen_client_types = async (data: GeneratorData, config: GeneratorCon
     const UseOperationOverload_file_data = data.file_data.get('UseOperationOverload')
     const UseOperationSWROverload_file_data = data.file_data.get('UseOperationSWROverload')
     add_import('UseMutationResult', '@tanstack/react-query', false, UseOperationOverload_file_data!.imports)
+    add_import('UseMutationOptions', '@tanstack/react-query', false, UseOperationOverload_file_data!.imports)
     add_import('SWRResponse', 'swr', false, UseOperationSWROverload_file_data!.imports)
     add_import('SWRConfiguration', 'swr', false, UseOperationSWROverload_file_data!.imports)
   }
@@ -1640,12 +1641,13 @@ export const gen_client_hooks = async (data: GeneratorData, config: GeneratorCon
   [
     `export const useOperationSWR: UseOperationSWROverload = <Operation extends GraphQLOperation, SelectionSet extends BoundedOperationSelectionSetType<GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT>>(operation: Operation, input: any, selection_set?: SelectionSet | boolean | null | undefined, options?: OperationFetchOptions & SWRConfiguration<BoundedOperationResponse<SelectionSet, GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT> & OperationFetchError, OperationFetchError>) => {`,
     `${i(1)}const opts = {`,
-    `${i(2)}revalidateIfStale: false,`,
-    `${i(2)}revalidateOnFocus: false,`,
-    `${i(2)}revalidateOnReconnect: false,`,
+    `${i(2)}// These settings basically do the same as swr/immutable`,
+    `${i(2)}// revalidateIfStale: false,`,
+    `${i(2)}// revalidateOnFocus: false, // This is for react where focus logic is used`,
+    `${i(2)}// revalidateOnReconnect: false,`,
     `${i(2)}...options`,
     `${i(1)}}`,
-    `${i(1)}const { data, mutate, error, isValidating } = useSWR<BoundedOperationResponse<SelectionSet, GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT> & OperationFetchError, OperationFetchError>(operation, async () => await operation_fetch(operation, input, selection_set, opts), {`,
+    `${i(1)}const { data, mutate, error, isValidating } = useSWR<BoundedOperationResponse<SelectionSet, GraphQLOperationOutput[Operation], typeof OBJECT_RECURSION_LIMIT> & OperationFetchError, OperationFetchError>([operation, input], async (operationName: Operation, variables) => await operation_fetch(operationName, variables, selection_set, opts), {`,
     `${i(2)}...opts,`,
     `${i(1)}})`,
     `${i(1)}const loading = !data && !error`,
