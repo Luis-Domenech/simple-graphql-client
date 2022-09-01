@@ -1,3 +1,10 @@
+## [1.0.35](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.34...v1.0.35) (2022-09-01)
+
+
+### Bug Fixes
+
+* **package:** Decimals scalars type was set to DecimalJsLike ([bce3f7e](https://github.com/Luis-Domenech/lfd-graphql-client/commit/bce3f7e39e863df3c9477af84532e6c5da85ec7c))
+
 ## [1.0.34](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.33...v1.0.34) (2022-09-01)
 
 
