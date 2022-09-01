@@ -83,6 +83,7 @@ export interface ImportData {
   }[]
   from: string
   is_relative: boolean
+  as?: string
   is_dev: boolean
 }
 

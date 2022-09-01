@@ -6,7 +6,7 @@ import { logger, REGEX, TYPE_FILES_TO_READ } from "../constants.js"
 import { GeneratorConfig, GeneratorData } from "../types.js"
 import { add_import, add_relative_import } from "./import-utils.js"
 import { Indent } from "./indent.js"
-import { ends_with_any, match_first } from "lfd-utils"
+import { ends_with_any, is_in, match_first } from "lfd-utils"
 import { add_artefacts } from "./addArtefacts.js"
 
 
@@ -34,14 +34,14 @@ const gen_arguments_types = async (field: FieldData, add_imports_to: string, dat
       // else if (arg.argument_type === "DateTime") arg_type = field.is_array ? `Date[]` : `Date`
       else if (arg.argument_type === "Boolean") arg_type = 'boolean' + '[]'.repeat(array_depth)
       else if (arg.argument_type === "Json" || arg.argument_type === "JSON" || arg.argument_type === "GraphQLJSONObject") arg_type = 'JSON' + '[]'.repeat(array_depth)
-      else if (arg.argument_type === "DecimalScalar") {
+      else if (is_in(arg.argument_type, ['DecimalScalar', 'Decimal'])) {
         const file_data = data.file_data.get(add_imports_to)
         if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
       
-        add_import('Prisma', '@prisma/client', false, data.dependencies)
-        add_import('Prisma', '@prisma/client', false, file_data!.imports)
+        add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
+        add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
 
-        arg_type = `Prisma.Decimal` + '[]'.repeat(array_depth)
+        arg_type = `DecimalJsLike` + '[]'.repeat(array_depth)
       }
       else arg_type = `${arg_type}` + '[]'.repeat(array_depth)
       
@@ -127,14 +127,14 @@ export const convert_to_ts_type = (field: FieldData | FieldArgumentData, add_imp
   // else if (field_type === "DateTime") return field.is_array ? `Date[]` : `Date`
   else if (field_type === "Boolean") return 'boolean' + '[]'.repeat(array_depth)
   else if (field_type === "Json" || field_type === "JSON" || field_type === "GraphQLJSONObject") return 'JSON' + '[]'.repeat(array_depth)
-  else if (field_type === "DecimalScalar") {
+  else if (is_in(field_type, ["DecimalScalar", 'Decimal'])) {
     const file_data = data.file_data.get(add_imports_to)
     if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
 
-    add_import('Prisma', '@prisma/client', false, file_data!.imports)
-    add_import('Prisma', '@prisma/client', false, data.dependencies)
+    add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
+    add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
 
-    return `Prisma.Decimal` + '[]'.repeat(array_depth)
+    return `DecimalJsLike` + '[]'.repeat(array_depth)
   }
   // else if (field_type) return convert_scalar_to_type(field, data, config)
   else return `${field_type}` + '[]'.repeat(array_depth)
@@ -272,7 +272,7 @@ export const instantiate_field = async (field: FieldData, add_imports_to: string
   else if (field.field_type === "Boolean") return instantiate_field_return(field, false, false, args, config)
   else if (field.field_type === "Json" || field.field_type === "JSON" || field.field_type === "GraphQLJSONObject") return instantiate_field_return(field, '{} as JSON', true, args, config)
   else if (field.field_type === "any") return instantiate_field_return(field, {}, false, args, config)
-  else if (field.field_type === "DecimalScalar") { 
+  else if (is_in(field.field_type, ["DecimalScalar", "Decimal"])) { 
     const file_data = data.file_data.get(add_imports_to)
     if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
   

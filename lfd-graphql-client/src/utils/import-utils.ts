@@ -49,8 +49,8 @@ export const get_import_data = (i: string): ImportData | null => {
   return actual_imports
 }
 
-export const add_import = (new_import: string, from_import: string, is_default: boolean, imports: Map<string, ImportData>) => {
-
+export const add_import = (new_import: string, from_import: string, is_default: boolean, imports: Map<string, ImportData>, as = from_import) => {
+  
   const find = imports.get(from_import)
 
   if (find) {
@@ -65,6 +65,7 @@ export const add_import = (new_import: string, from_import: string, is_default: 
   }
   else imports.set(from_import, {
     from: from_import,
+    as: as,
     is_relative: from_import.includes("."),
     is_dev: is_in(from_import, DEV_PACKAGES),
     imports: [{
@@ -137,7 +138,7 @@ export const get_dependencies = async (data: GeneratorData): Promise<Map<string,
     await Promise.all(Array.from(file_data.imports.values()).map(async (i) => {
       if (!i.is_relative) {
         if (!imports.has(i.from)) imports.set(i.from, {
-          dependency: i.from,
+          dependency: i.as ? i.as : i.from,
           is_dev: i.is_dev
         })
       }
