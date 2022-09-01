@@ -34,6 +34,7 @@ export interface ScalarOverrideData {
   import?: string
   from?: string
   is_default?: boolean
+  as?: string
 }
 
 export interface TypesGenConfig {

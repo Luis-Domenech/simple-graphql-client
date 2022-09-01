@@ -559,6 +559,7 @@ export type ScalarOverrideData = {
   import?: string 
   from?: string
   isDefault?: boolean
+  as?: string
 }
 
 export type SchemaGeneratorConfig = {
@@ -1087,21 +1088,22 @@ scalars:
   - LanguageScalar: { override: Language }
   - MenuScalar: { override: Menu }
   - DateTime: { override: Date }
-  - DecimalScalar: { override: 'Prisma.Decimal', import: "Prisma", from: "@prisma/client", isDefault: false }
+  - DecimalScalar: { override: 'DecimalJsLike', import: "Prisma", from: "@prisma/client/runtime", isDefault: false, as: "@prisma/client" }
 */
 // Assuming those configs, the scalars file generated would look like this
 import { Menu, Language } from './some/where'
-import { Prisma } from '@prisma/client' // Here isDefault is false
-import Prisma from '@prisma/client' // Here isDefault is true
+import { DecimalJsLike } from '@prisma/client/runtime' // Here isDefault is false
 
 export type LanguageScalar = Language
 export type MenuScalar = Menu
 export type DecimalScalar = Prisma.Decimal
 
 // If we instead have isDefault to true for DecimalScalar, then DecimalScalar would be
-import Prisma from '@prisma/client' // Notice we are default importing
+import DecimalJsLike from '@prisma/client/runtime' // Notice we are default importing
 
-export type DecimalScalar = Prisma.Decimal
+export type DecimalScalar = DecimalJsLike
+
+// Finally, the auto dependency installer will install the dependency used in the `from` field. However, this can cause issues as installing `@prisma/client/runtime` does not work, so you can override what is installed for that scalar override using the `as` field. The above scalar override for DecimalScalar will set the import with `@prisma/client/runtime`, but will install `@prisma/client` instead... if and only if the config option of `installDeps` is set to true
 ```
 
 - `wipeOutputDir`
