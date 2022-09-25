@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: 'npm' # See documentation for possible values
-    directory: '/packages/basic-codegen/' # Location of package manifests
+  - package-ecosystem: 'yarn' # See documentation for possible values
+    directory: '/lfd-graphql-client/' # Location of package manifests
     schedule:
       interval: 'daily'
