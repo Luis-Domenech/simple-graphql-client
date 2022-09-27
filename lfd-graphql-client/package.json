@@ -2,7 +2,7 @@
   "name": "lfd-graphql-client",
   "description": "A very simple code generator that can generate a graphql schema, typescript types from a graphql schema and a type-safe client querying operations on a server from data obtained from parsing a graphql schema",
   "author": "Luis F. Domenech Ortiz <luisfabiandomenech@gmail.com> (https://luisfdomenech.com)",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "main": "./dist/bin.js",
   "exports": "./dist/bin.js",
   "license": "Apache-2.0",
