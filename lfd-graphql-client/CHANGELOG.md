@@ -1,3 +1,10 @@
+## [1.0.38](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.37...v1.0.38) (2022-09-27)
+
+
+### Bug Fixes
+
+* **package:** Added signal to fetch options ([edb7d2c](https://github.com/Luis-Domenech/lfd-graphql-client/commit/edb7d2cc12ad81a16d7a65c2a84debbd6e1f508c))
+
 ## [1.0.37](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.36...v1.0.37) (2022-09-01)
 
 
