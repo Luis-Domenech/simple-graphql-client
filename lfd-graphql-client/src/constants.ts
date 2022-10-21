@@ -63,9 +63,9 @@ export const DEFAULT_CONFIG: GeneratorConfig = {
     add_null: false,
     add_undefined: false,
     scalars: new Map([
-      [ "Decimal", {override: 'DecimalJsLike', import: "DecimalJsLike", from: "@prisma/client/runtime", is_default: false, as: "@prisma/client"} ],
-      [ "DecimalScalar", {override: 'DecimalJsLike', import: "DecimalJsLike", from: "@prisma/client/runtime", is_default: false, as: "@prisma/client"} ],
-      [ "DateTime", {override: 'Date'} ],
+      // [ "Decimal", {override: 'DecimalJsLike', import: "DecimalJsLike", from: "@prisma/client/runtime", is_default: false, as: "@prisma/client"} ],
+      // [ "DecimalScalar", {override: 'DecimalJsLike', import: "DecimalJsLike", from: "@prisma/client/runtime", is_default: false, as: "@prisma/client"} ],
+      // [ "DateTime", {override: 'Date'} ],
     ]),
     wipe_output_dir: false
   },
