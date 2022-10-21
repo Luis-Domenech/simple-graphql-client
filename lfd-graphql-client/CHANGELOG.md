@@ -1,3 +1,10 @@
+## [1.0.40](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.39...v1.0.40) (2022-10-21)
+
+
+### Bug Fixes
+
+* **package:** Removed troublesome default scalar overrides ([e175e39](https://github.com/Luis-Domenech/lfd-graphql-client/commit/e175e398708c94028ba4ed51911c287029bcc18b))
+
 ## [1.0.39](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.38...v1.0.39) (2022-09-27)
 
 
