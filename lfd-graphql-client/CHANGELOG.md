@@ -1,3 +1,10 @@
+## [1.0.41](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.40...v1.0.41) (2022-10-21)
+
+
+### Bug Fixes
+
+* **package:** Removed auto Decimal type conversion. Use overrides instead ([5317850](https://github.com/Luis-Domenech/lfd-graphql-client/commit/5317850a894773097d0d761490fc110467295b27))
+
 ## [1.0.40](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.39...v1.0.40) (2022-10-21)
 
 
