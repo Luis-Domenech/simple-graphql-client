@@ -34,15 +34,15 @@ const gen_arguments_types = async (field: FieldData, add_imports_to: string, dat
       // else if (arg.argument_type === "DateTime") arg_type = field.is_array ? `Date[]` : `Date`
       else if (arg.argument_type === "Boolean") arg_type = 'boolean' + '[]'.repeat(array_depth)
       else if (arg.argument_type === "Json" || arg.argument_type === "JSON" || arg.argument_type === "GraphQLJSONObject") arg_type = 'JSON' + '[]'.repeat(array_depth)
-      else if (is_in(arg.argument_type, ['DecimalScalar', 'Decimal'])) {
-        const file_data = data.file_data.get(add_imports_to)
-        if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
+      // else if (is_in(arg.argument_type, ['DecimalScalar', 'Decimal'])) {
+      //   const file_data = data.file_data.get(add_imports_to)
+      //   if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
       
-        add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
-        add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
+      //   add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
+      //   add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
 
-        arg_type = `DecimalJsLike` + '[]'.repeat(array_depth)
-      }
+      //   arg_type = `DecimalJsLike` + '[]'.repeat(array_depth)
+      // }
       else arg_type = `${arg_type}` + '[]'.repeat(array_depth)
       
       if (arg_name.includes("?") && config.types.add_null) arg_type += ' | null'
@@ -127,15 +127,15 @@ export const convert_to_ts_type = (field: FieldData | FieldArgumentData, add_imp
   // else if (field_type === "DateTime") return field.is_array ? `Date[]` : `Date`
   else if (field_type === "Boolean") return 'boolean' + '[]'.repeat(array_depth)
   else if (field_type === "Json" || field_type === "JSON" || field_type === "GraphQLJSONObject") return 'JSON' + '[]'.repeat(array_depth)
-  else if (is_in(field_type, ["DecimalScalar", 'Decimal'])) {
-    const file_data = data.file_data.get(add_imports_to)
-    if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
+  // else if (is_in(field_type, ["DecimalScalar", 'Decimal'])) {
+  //   const file_data = data.file_data.get(add_imports_to)
+  //   if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
 
-    add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
-    add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
+  //   add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
+  //   add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
 
-    return `DecimalJsLike` + '[]'.repeat(array_depth)
-  }
+  //   return `DecimalJsLike` + '[]'.repeat(array_depth)
+  // }
   // else if (field_type) return convert_scalar_to_type(field, data, config)
   else return `${field_type}` + '[]'.repeat(array_depth)
 }
