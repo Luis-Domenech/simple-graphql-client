@@ -1,3 +1,10 @@
+## [1.0.42](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.41...v1.0.42) (2022-10-26)
+
+
+### Bug Fixes
+
+* **pkg:** Fixed issue with Decimal ([358c36b](https://github.com/Luis-Domenech/lfd-graphql-client/commit/358c36b18624cf977a3b2ec4b583d56fc76da774))
+
 ## [1.0.41](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.40...v1.0.41) (2022-10-21)
 
 
