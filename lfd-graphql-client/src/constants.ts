@@ -233,6 +233,8 @@ export const CLIENT_GENERATOR_DIRS: Record<ClientGeneratorExport, string> = {
 export const DEV_PACKAGES = []
 
 export const PRIMITIVES = [
+  "Decimal",
+  "Buffer",
   "String",
   "ID",
   "Int",

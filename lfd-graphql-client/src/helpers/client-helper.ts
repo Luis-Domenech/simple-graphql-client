@@ -1311,7 +1311,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(4)}// Check if type of the field is a primitive. If that's the case, add the field`,
     `${i(4)}const field_type = recurse_operation_types(selection, GRAPHQL_OPERATION_DATA[operation]['output_types'], [...parent_queue, selection])`,
     `${i(4)}if (!field_type) return // If at recursion limit, don't do anything else`,
-    `${i(4)}if (contains(field_type, ALL_PRIMITIVES)) operation_request_query.push(indent(\`\${selection}\`, rec))`,
+    `${i(4)}if (contains(field_type, ALL_PRIMITIVES, false)) operation_request_query.push(indent(\`\${selection}\`, rec))`,
     `${i(3)}}`,
     `${i(2)}})`,
     `${i(2)}const curr_line = operation_request_query[operation_request_query.length - 1]`,
