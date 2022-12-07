@@ -36,7 +36,7 @@
     "js-yaml": "^4.1.0",
     "lfd-utils": "^1.0.26",
     "node-fetch": "^3.2.8",
-    "prettier": "2.5.1",
+    "prettier": "2.8.1",
     "simple-wasm-graphql-parser": "^1.0.5",
     "yargs": "^17.5.1"
   },
