@@ -1283,8 +1283,6 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(5)}// Only apply recursion limit on top lever types`,
     `${i(5)}const overriden_recursion_limit = RECURSION_LIMIT_OVERRIDES.get(field_type)`,
     `${i(5)}type_rec_limit = overriden_recursion_limit !== undefined ? recursion + overriden_recursion_limit : rec_limit`,
-    `${i(5)}// console.log(rec_limit)`,
-    `${i(5)}if (overriden_recursion_limit) {console.log(field_type); console.log(overriden_recursion_limit); console.log(type_rec_limit)}`,
     `${i(4)}}`,
     `${i(4)}if (rec >= type_rec_limit) {`,
     `${i(5)}if ((!union_select && rec === 2) || (union_select && rec === 3)) {`,
