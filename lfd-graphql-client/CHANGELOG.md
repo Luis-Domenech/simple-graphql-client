@@ -1,3 +1,10 @@
+## [1.0.44](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.43...v1.0.44) (2022-12-22)
+
+
+### Bug Fixes
+
+* **package:** Removed unecessary console log ([14da214](https://github.com/Luis-Domenech/lfd-graphql-client/commit/14da214cdf8d2d167fa4e088e02ad9d80f163879))
+
 ## [1.0.43](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.42...v1.0.43) (2022-10-26)
 
 
