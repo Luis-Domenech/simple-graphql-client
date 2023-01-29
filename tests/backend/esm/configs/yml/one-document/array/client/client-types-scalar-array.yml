@@ -19,6 +19,7 @@ generator:
       endpoint: http://localhost:4000/graphql
       fetchDelay: 3
       loopFetchLimit: 3
+      addIgnore: true
       wipeOutputDir: true
       # recursionOverrides: 
       #   - Account: 1

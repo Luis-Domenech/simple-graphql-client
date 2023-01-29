@@ -1381,6 +1381,11 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(4)}}`,
     `${i(3)}}`,
     `${i(3)}if (log) console.log(\`Fetch succedded on operation: \${operation_name}\`)`,
+    
+    
+    config.client.add_ignore ? `${i(3)}// Used to avoid excesively the 'Type instantiation is excessively deep and possibly infinite.' error ` : '',
+    config.client.add_ignore ? `${i(3)}// ts-ignore ` : '',
+    
     `${i(3)}return { output: operation_response }`,
     `${i(2)}}`,
     `${i(2)}catch(e) {`,
@@ -1393,7 +1398,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(2)}return { fetch_errors: [e] } as any`,
     `${i(1)}}`,
     `}`,
-  ].join("\n"))
+  ].filter(Boolean).join("\n"))
   data.file_data.set('custom_fetch', {
     file_name: file_name,
     file_dir: file_dir,
@@ -1520,6 +1525,8 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(4)}}`,
     `${i(3)}}`,
     `${i(3)}if (log) console.log(\`Fetch succeeded on operation: \${operation_name}\`)`,
+    config.client.add_ignore ? `${i(3)}// Used to avoid excesively the 'Type instantiation is excessively deep and possibly infinite.' error ` : '',
+    config.client.add_ignore ? `${i(3)}// ts-ignore ` : '',
     `${i(3)}return { output: operation_response }`,
     `${i(2)}}`,
     `${i(2)}catch(e) {`,
@@ -1532,7 +1539,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(2)}return { fetch_errors: [e] } as any`,
     `${i(1)}}`,
     `}`,
-  ].join("\n"))
+  ].filter(Boolean).join("\n"))
   data.file_data.set('operation_fetch', {
     file_name: file_name,
     file_dir: file_dir,

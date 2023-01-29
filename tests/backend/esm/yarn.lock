@@ -298,7 +298,7 @@ __metadata:
     "@swc/wasm": ^1.2.236
     "@types/node": 17.0.21
     "@types/node-fetch": ^2.6.2
-    lfd-graphql-client: ../../../simple-graphql-client
+    lfd-graphql-client: ../../../lfd-graphql-client
     node-fetch: ^3.2.10
     regenerator-runtime: ^0.13.9
     ts-node: ^10.9.1
@@ -393,32 +393,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lfd-graphql-client@file:../../../simple-graphql-client::locator=esm%40workspace%3A.":
-  version: 1.0.14
-  resolution: "lfd-graphql-client@file:../../../simple-graphql-client#../../../simple-graphql-client::hash=b46304&locator=esm%40workspace%3A."
+"lfd-graphql-client@file:../../../lfd-graphql-client::locator=esm%40workspace%3A.":
+  version: 1.0.47
+  resolution: "lfd-graphql-client@file:../../../lfd-graphql-client#../../../lfd-graphql-client::hash=1f3b63&locator=esm%40workspace%3A."
   dependencies:
     envsub: ^4.0.7
     graphql: ^16.5.0
     js-yaml: ^4.1.0
-    lfd-utils: ^1.0.22
+    lfd-utils: ^1.0.26
     node-fetch: ^3.2.8
     prettier: 2.5.1
     simple-wasm-graphql-parser: ^1.0.5
     yargs: ^17.5.1
   bin:
-    sgc: ./dist/bin.js
-    sgc-codegen: ./dist/bin.js
-    simple-graphql-client: ./dist/bin.js
-  checksum: 8bb918530c87739860bc1aae47ad4bb15b4768304f4388167d3eba421857564d5a80a287a75d55319edba155046e06b22766b6daa784d8e26b3aeb785d161e08
+    lfd: ./dist/bin.js
+    lfd-gc: ./dist/bin.js
+    lfd-graphql-client: ./dist/bin.js
+  checksum: 4e8e48f85a6d924c0a1e414b28c24ef4b22b01dd592d2c7281d0cf02694f49dfd18afe9048d095b1fb876d531c84678569bf25fd66e93cad890e267b6623f398
   languageName: node
   linkType: hard
 
-"lfd-utils@npm:^1.0.22":
-  version: 1.0.24
-  resolution: "lfd-utils@npm:1.0.24"
+"lfd-utils@npm:^1.0.26":
+  version: 1.0.26
+  resolution: "lfd-utils@npm:1.0.26"
   dependencies:
     chalk: ^5.0.1
-  checksum: e6ffb29eb6cdfb35e5d80bdaebf783fe878cfdb26e33f6c95ab4dc6fda15bbe3e0513721053c3c7c83b54a0e4538a96c1e570a7b9a6f83cb25468d3293dea0b3
+  checksum: 53eee4298c6c749b15b8a79a9c9bc2e1cd8ad5a4efe32e27a143e273c4cecf44339dd79c0e568edab7e4bd4abbce5ad37c181582ee741032b4dd24d0c7b7d176
   languageName: node
   linkType: hard
 
