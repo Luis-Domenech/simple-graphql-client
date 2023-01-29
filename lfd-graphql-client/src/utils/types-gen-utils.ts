@@ -40,7 +40,7 @@ const gen_arguments_types = async (field: FieldData, add_imports_to: string, dat
       
         // add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
         // add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
-        add_import('Prisma', '@prisma', true, file_data!.imports)
+        add_import('Prisma', '@prisma/client', true, file_data!.imports)
 
         arg_type = `Prisma.Prisma.Decimal` + '[]'.repeat(array_depth)
       }
@@ -134,7 +134,7 @@ export const convert_to_ts_type = (field: FieldData | FieldArgumentData, add_imp
 
     // add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
     // add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
-    add_import('Prisma', '@prisma', true, file_data!.imports)
+    add_import('Prisma', '@prisma/client', true, file_data!.imports)
 
     return `Prisma.Prisma.Decimal` + '[]'.repeat(array_depth)
   }
@@ -279,7 +279,7 @@ export const instantiate_field = async (field: FieldData, add_imports_to: string
     if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
   
     // add_import('Prisma', '@prisma', false, data.dependencies)
-    add_import('Prisma', '@prisma', true, file_data!.imports)
+    add_import('Prisma', '@prisma/client', true, file_data!.imports)
 
     return instantiate_field_return(field, 'new Prisma.Prisma.Decimal(1)', true, args, config)
   }
