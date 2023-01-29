@@ -1,3 +1,10 @@
+## [1.0.49](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.48...v1.0.49) (2023-01-29)
+
+
+### Bug Fixes
+
+* **package:** Changed add_ignore to hide_type_instantiation_error for clarity ([f7b867b](https://github.com/Luis-Domenech/lfd-graphql-client/commit/f7b867b70086a2bbe85e16654c554d0696e8c44c))
+
 ## [1.0.48](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.47...v1.0.48) (2023-01-29)
 
 
