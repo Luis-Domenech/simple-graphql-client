@@ -1,3 +1,10 @@
+## [1.0.48](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.47...v1.0.48) (2023-01-29)
+
+
+### Bug Fixes
+
+* **package:** Finished adding addIgnore ([6b470b4](https://github.com/Luis-Domenech/lfd-graphql-client/commit/6b470b410f918dd9c8caa1765ef75108ed3be9ef))
+
 ## [1.0.47](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.46...v1.0.47) (2023-01-29)
 
 
