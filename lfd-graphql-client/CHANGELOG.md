@@ -1,3 +1,10 @@
+## [1.0.45](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.44...v1.0.45) (2023-01-29)
+
+
+### Bug Fixes
+
+* **package:** DecimalScalar type issue fixed ([0d98bfc](https://github.com/Luis-Domenech/lfd-graphql-client/commit/0d98bfcc5fcab8919714c058a7471efca1ba8d5f))
+
 ## [1.0.44](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.43...v1.0.44) (2022-12-22)
 
 
