@@ -1,3 +1,10 @@
+## [1.0.47](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.46...v1.0.47) (2023-01-29)
+
+
+### Bug Fixes
+
+* **package:** Added add_ignore to ignore possible type instantiation problems on operation_fetch ([ee1c704](https://github.com/Luis-Domenech/lfd-graphql-client/commit/ee1c704291f0e52df2af7dd0089643c080c5e85c))
+
 ## [1.0.46](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.45...v1.0.46) (2023-01-29)
 
 
