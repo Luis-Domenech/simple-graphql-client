@@ -60,6 +60,7 @@ export interface ClientGenConfig {
   wipe_output_dir: boolean
   recursion_overrides: Map<string, number> | undefined
   gen_hooks: boolean
+  add_ignore: boolean
 }
 
 export interface SchemaGenConfig {

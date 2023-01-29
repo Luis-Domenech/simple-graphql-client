@@ -217,6 +217,7 @@ const initialize_from_user_config = (user_config: any, config: GeneratorConfig) 
     endpoint: wasProvided(user_config.generator.client.endpoint) ? user_config.generator.client.endpoint : DEFAULT_CONFIG.client.endpoint,
     recursion_overrides: recursionOverrides,
     gen_hooks: wasProvided(user_config.generator.client.gen_hooks) ? user_config.generator.client.gen_hooks : DEFAULT_CONFIG.client.gen_hooks,
+    add_ignore: wasProvided(user_config.generator.client.add_ignore) ? user_config.generator.client.gen_hooks : DEFAULT_CONFIG.client.add_ignore,
   }
 }
 
