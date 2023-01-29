@@ -1383,10 +1383,10 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(3)}if (log) console.log(\`Fetch succedded on operation: \${operation_name}\`)`,
     
     
-    config.client.add_ignore ? `${i(3)}// Used to avoid excesively the 'Type instantiation is excessively deep and possibly infinite.' error ` : '',
-    config.client.add_ignore ? `${i(3)}// ts-ignore ` : '',
+    // config.client.fixTypeInstantiation ? `${i(3)}// Used to avoid excesively the 'Type instantiation is excessively deep and possibly infinite.' error ` : '',
+    // config.client.fixTypeInstantiation ? `${i(3)}// ts-ignore ` : '',
     
-    `${i(3)}return { output: operation_response }`,
+    config.client.hide_type_instantiation_error ? `${i(3)}return { output: operation_response as any }` : `${i(3)}return { output: operation_response }`,
     `${i(2)}}`,
     `${i(2)}catch(e) {`,
     `${i(3)}if (log) console.log(\`Fetch failed on operation: \${operation_name}\`)`,
@@ -1525,9 +1525,9 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(4)}}`,
     `${i(3)}}`,
     `${i(3)}if (log) console.log(\`Fetch succeeded on operation: \${operation_name}\`)`,
-    config.client.add_ignore ? `${i(3)}// Used to avoid excesively the 'Type instantiation is excessively deep and possibly infinite.' error ` : '',
-    config.client.add_ignore ? `${i(3)}// ts-ignore ` : '',
-    `${i(3)}return { output: operation_response }`,
+    // config.client.fixTypeInstantiation ? `${i(3)}// Used to avoid excesively the 'Type instantiation is excessively deep and possibly infinite.' error ` : '',
+    // config.client.fixTypeInstantiation ? `${i(3)}// ts-ignore ` : '',
+    config.client.hide_type_instantiation_error ? `${i(3)}return { output: operation_response as any }` : `${i(3)}return { output: operation_response }`,
     `${i(2)}}`,
     `${i(2)}catch(e) {`,
     `${i(3)}if (log) console.log(\`Fetch failed on operation: \${operation_name}\`)`,

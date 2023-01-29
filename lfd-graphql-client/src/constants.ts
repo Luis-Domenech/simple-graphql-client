@@ -79,7 +79,7 @@ export const DEFAULT_CONFIG: GeneratorConfig = {
     endpoint: undefined,
     recursion_overrides: new Map(),
     gen_hooks: false,
-    add_ignore: false
+    hide_type_instantiation_error: false
   },
 }
 
