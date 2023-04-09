@@ -402,6 +402,7 @@ export const gen_outputs = async (data: GeneratorData, config: GeneratorConfig):
         const desc = gen_description(o.description, 0, config)
         const fields = await gen_fields(o.fields, o.name, data, config)
         let typename_field = config.types.add_typename_field ? `${i(1)}__typename?: '${o.name}',` : ""      
+        //TODO: Maybe this should be remove, the `i.name.includes("?")` part
         if (i.name.includes("?") && config.types.add_null && config.types.add_typename_field) typename_field += ' | null'
         if (i.name.includes("?") && config.types.add_undefined && config.types.add_typename_field) typename_field += ' | undefined'
         
