@@ -1,3 +1,10 @@
+## [1.0.50](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.49...v1.0.50) (2023-04-09)
+
+
+### Bug Fixes
+
+* **function:** Added fix for graphql-php not finding operation type ([93a8251](https://github.com/Luis-Domenech/lfd-graphql-client/commit/93a82516144bc46e755101af1768e58255561735))
+
 ## [1.0.49](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.48...v1.0.49) (2023-01-29)
 
 
