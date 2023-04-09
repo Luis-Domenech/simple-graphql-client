@@ -1356,7 +1356,7 @@ export const gen_clients_functions = async (data: GeneratorData, config: Generat
     `${i(1)}`,
     `${i(1)}if (log) console.log(\`Executing operation: \${operation_name}\`)`,
     `${i(1)}try {`,
-    `${i(2)}const raw_response = await fetch(prod ? endpoint : dev_endpoint, {...fetch_options, method: 'POST', headers: headers, body: JSON.stringify(operation_request})})`,
+    `${i(2)}const raw_response = await fetch(prod ? endpoint : dev_endpoint, {...fetch_options, method: 'POST', headers: headers, body: JSON.stringify(operation_request)})`,
     `${i(2)}try {`,
     `${i(3)}const json = await raw_response.json() as any`,
     `${i(3)}if (!json) {`,
