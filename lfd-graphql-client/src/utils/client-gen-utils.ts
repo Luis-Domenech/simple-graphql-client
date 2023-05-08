@@ -15,7 +15,7 @@ export const gen_fields_with_response_as_type = async (fields: FieldData[], add_
     const field_name = field.is_nullable ? `${field.name}?` : field.name
     const field_desc = gen_description(field.description, 1, config)
     
-    let field_type = convert_to_ts_type(field, add_imports_to, data)
+    let field_type = convert_to_ts_type(field, add_imports_to, data, config)
 
     if (field_name.includes("?") && config.types.add_null) field_type += ' | null'
     if (field_name.includes("?") && config.types.add_undefined) field_type += ' | undefined'
@@ -53,7 +53,7 @@ export const gen_fields_with_args_as_type = async (fields: FieldData[], add_impo
         const arg_name = arg.is_nullable ? `${arg.name}?` : arg.name
         const arg_desc = gen_description(arg.description, indent + 1, config)
         
-        let arg_type = convert_to_ts_type(arg, add_imports_to, data)
+        let arg_type = convert_to_ts_type(arg, add_imports_to, data, config)
         if (arg_name.includes("?") && config.types.add_null) arg_type += ' | null'
         if (arg_name.includes("?") && config.types.add_undefined) arg_type += ' | undefined'
 
@@ -138,7 +138,7 @@ export const gen_data_fields = async (field: FieldData | FieldArgumentData, add_
   const default_to_return_value: {__typename?: string | boolean, fields?: object | undefined, [k: string]: object | boolean | string | undefined} | boolean = data_field === "input_selection_sets" ? true : data_field === "output_selection_sets" ? true : data_field === "output_types" ? {__typename: type_override ? type_override : field_type} : data_field === "input_types" ? {complete_type: complete_field_type } : true
 
   let to_return: {__typename?: string | boolean, field?: object | undefined, [k: string]: object | boolean | string | undefined} | boolean = default_to_return_value
-
+ 
   const ret = (return_value: {__typename?: string | boolean, fields?: object | undefined, [k: string]: object | boolean | string | undefined} | boolean = default_to_return_value, typename = type_override ? type_override : field_type): {__typename?: string | boolean, fields?: object | undefined, [k: string]: object | boolean | string | undefined} | boolean => {
     if (data_field === "input_selection_sets") {
       if (typeof return_value === "object") return return_value
@@ -171,9 +171,14 @@ export const gen_data_fields = async (field: FieldData | FieldArgumentData, add_
   if (data_field === "input_types" && recursion > INPUT_RECURSION_LIMIT) return ret()
 
   if (recursion <= recursion_limit) {
-    if (is_in(field_type, [...PRIMITIVES, 'any'])) to_return = ret()
-    else if (field.is_enum) to_return = ret()
+    if (is_in(field_type, [...PRIMITIVES, 'any'])) {
+      to_return = ret()
+    }
+    else if (field.is_enum) {
+      to_return = ret()
+    }
     else if (field.is_union) {
+      
       // Since the idea of this function is to generate objects with which we can then validate inputs and outputs
       // of operations, then for unions, the idea is to recurse all union member of this union
       // and then create a super objects with all fields from all unions
@@ -217,6 +222,7 @@ export const gen_data_fields = async (field: FieldData | FieldArgumentData, add_
               // Since we are dealing with same field, recusrion stays the same
               const val = await gen_data_fields(temp_field, add_imports_to, recursion, recursion_limit, data_field, data, config)
               if (typeof val === "object") obj_data.push(val)
+              // obj_data.push(val)
             }))
           }
         }
@@ -323,7 +329,8 @@ export const gen_data_fields = async (field: FieldData | FieldArgumentData, add_
     }
   }
 
-  return typeof to_return === "object" ? Object.keys(to_return).length === 0 ? true : to_return : to_return
+  // return typeof to_return === "object" ? Object.keys(to_return).length === 0 ? true : to_return : to_return
+  return to_return
 }
 
 // export const gen_selection_set_type = async (field: FieldData | FieldArgumentData, add_imports_to: string, recursion: number, recursion_limit: number, is_input: boolean, data: GeneratorData, config: GeneratorConfig, type_override = ""): Promise<Record<string, string | object> | string> => {

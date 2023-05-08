@@ -35,14 +35,35 @@ const gen_arguments_types = async (field: FieldData, add_imports_to: string, dat
       else if (arg.argument_type === "Boolean") arg_type = 'boolean' + '[]'.repeat(array_depth)
       else if (arg.argument_type === "Json" || arg.argument_type === "JSON" || arg.argument_type === "GraphQLJSONObject") arg_type = 'JSON' + '[]'.repeat(array_depth)
       else if (is_in(arg.argument_type, ['DecimalScalar', 'Decimal'])) {
+        // Since Prisma.Prisma.Decimal only works in servers since running `prisma generate`
+        // is the only way for this type to exist, when ereturning a Decima, we will check if user
+        // is overriding the type, for which case we return that instead of Prisma.Prisma.Decimal
+        const to_check: string[] = ['Prisma.Prisma.Decimal', 'DecimalScalar', 'Decimal', 'Prisma.Decimal']
+
+        if (config.types.scalars)
+        for (const override_str of to_check) {
+          const find = config.types.scalars.get(override_str)
+          if (find) {
+            if (find.import && find.from) {
+              const file_data = data.file_data.get(add_imports_to)
+              if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
+              
+              add_import(find.import, find.from, find.is_default ?? false, file_data!.imports)
+
+              return find.override + '[]'.repeat(array_depth)
+            }
+            else return find.override + '[]'.repeat(array_depth)
+          }
+        }
+
         const file_data = data.file_data.get(add_imports_to)
         if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
-      
-        // add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
+
         // add_import('DecimalJsLike', '@prisma/client/runtime', false, file_data!.imports, '@prisma/client')
+        // add_import('DecimalJsLike', '@prisma/client/runtime', false, data.dependencies, '@prisma/client')
         add_import('Prisma', '@prisma/client', true, file_data!.imports)
 
-        arg_type = `Prisma.Prisma.Decimal` + '[]'.repeat(array_depth)
+        return `Prisma.Prisma.Decimal` + '[]'.repeat(array_depth)
       }
       else arg_type = `${arg_type}` + '[]'.repeat(array_depth)
       
@@ -114,7 +135,7 @@ export const is_an_input = (field: FieldData | FieldArgumentData, data: Generato
 }
 
 
-export const convert_to_ts_type = (field: FieldData | FieldArgumentData, add_imports_to: string, data: GeneratorData) => {  
+export const convert_to_ts_type = (field: FieldData | FieldArgumentData, add_imports_to: string, data: GeneratorData, config: GeneratorConfig) => {  
   const field_type = (field as FieldData).field_type ? (field as FieldData).field_type : (field as FieldArgumentData).argument_type
   const complete_field_type = (field as FieldData).field_complete_type ? (field as FieldData).field_complete_type : (field as FieldArgumentData).argument_complete_type
   const array_depth = (complete_field_type.match(REGEX.match_closing_brackets) || []).length
@@ -129,6 +150,27 @@ export const convert_to_ts_type = (field: FieldData | FieldArgumentData, add_imp
   else if (field_type === "Boolean") return 'boolean' + '[]'.repeat(array_depth)
   else if (field_type === "Json" || field_type === "JSON" || field_type === "GraphQLJSONObject") return 'JSON' + '[]'.repeat(array_depth)
   else if (is_in(field_type, ["DecimalScalar", 'Decimal'])) {
+    // Since Prisma.Prisma.Decimal only works in servers since running `prisma generate`
+    // is the only way for this type to exist, when ereturning a Decima, we will check if user
+    // is overriding the type, for which case we return that instead of Prisma.Prisma.Decimal
+    const to_check: string[] = ['Prisma.Prisma.Decimal', 'DecimalScalar', 'Decimal', 'Prisma.Decimal']
+
+    if (config.types.scalars)
+    for (const override_str of to_check) {
+      const find = config.types.scalars.get(override_str)
+      if (find) {
+        if (find.import && find.from) {
+          const file_data = data.file_data.get(add_imports_to)
+          if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
+          
+          add_import(find.import, find.from, find.is_default ?? false, file_data!.imports)
+
+          return find.override + '[]'.repeat(array_depth)
+        }
+        else return find.override + '[]'.repeat(array_depth)
+      }
+    }
+
     const file_data = data.file_data.get(add_imports_to)
     if (!file_data) logger.error(`Error getting file data for ${add_imports_to}`)
 
@@ -213,7 +255,7 @@ export const gen_fields = async (fields: FieldData[], add_imports_to: string, da
 
     add_relative_import(add_imports_to, field.field_type, data, config)
     
-    let field_type = convert_to_ts_type(field, add_imports_to, data)
+    let field_type = convert_to_ts_type(field, add_imports_to, data, config)
 
     // Now we recurse the arguments and get every field, their types and descs
     if (has_arguments) {
@@ -226,7 +268,7 @@ export const gen_fields = async (fields: FieldData[], add_imports_to: string, da
         const arg_name = arg.is_nullable ? `${arg.name}?` : arg.name
         const arg_desc = gen_description(arg.description, 1, config)
 
-        let arg_type = convert_to_ts_type(arg, add_imports_to, data)
+        let arg_type = convert_to_ts_type(arg, add_imports_to, data, config)
         if (arg_name.includes("?") && config.types.add_null) arg_type += ' | null'
         if (arg_name.includes("?") && config.types.add_undefined) arg_type += ' | undefined'
 

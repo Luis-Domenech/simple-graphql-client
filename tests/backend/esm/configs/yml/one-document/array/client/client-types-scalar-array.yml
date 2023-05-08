@@ -21,6 +21,7 @@ generator:
       loopFetchLimit: 3
       addIgnore: true
       wipeOutputDir: true
+      hideTypeInstantiationError: true
       # recursionOverrides: 
       #   - Account: 1
   - types:
@@ -37,4 +38,4 @@ generator:
         - DateTime: { override: 'Date' }
         - Langs: { override: 'Record<Language, string[]>', import: "Language" }
         - MenuScalar: { override: 'Menu' }
-        - DecimalScalar: { override: 'Prisma.Decimal', import: "Prisma", from: "@prisma/client", isDefault: false }
+        - DecimalScalar: { override: 'number' }

@@ -58,6 +58,8 @@ directive @repeatable_example repeatable on FIELD_DEFINITION | OBJECT | INTERFAC
 
 "Prisma DateTime Scalar"
 scalar DateTime
+"Prisma Decimal Scalar"
+scalar DecimalScalar
 
 enum Role @example {
     ADMIN @uppercase
@@ -65,7 +67,7 @@ enum Role @example {
 }
 
 "Single line description for Account"
-type Account implements BaseInput @exmaple {
+type Account @example {
     """
     Multiline description
     of the name field
@@ -76,6 +78,7 @@ type Account implements BaseInput @exmaple {
     role: Role!
     hidden_data: [String!] @auth(role: "ADMIN")
     created_at: DateTime!
+    balance: DecimalScalar!
 }
 
 type GeneralError @example {
@@ -128,6 +131,7 @@ extend input GetTweetsInput {
 type Query {
     getAccount(id: ID!): Account
     getTweets(data: GetTweetsInput!): TweetResponse
+    getAllTweets(id: [ID]!): [UnionTestTweet]
 }
 
 type Mutation {
@@ -248,6 +252,7 @@ type ProtectedTweet implements Tweet, A {
 
 "This is the tweet response"
 union TweetResponse = RegularTweet | VanishTweet
+union UnionTestTweet = RegularTweet | VanishTweet | String
 
 extend scalar DateTime @lowercase
 extend type Account {
