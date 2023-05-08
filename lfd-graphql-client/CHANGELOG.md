@@ -1,3 +1,10 @@
+## [1.0.52](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.51...v1.0.52) (2023-05-08)
+
+
+### Bug Fixes
+
+* **core:** Decimal overriding added ([e29bc7a](https://github.com/Luis-Domenech/lfd-graphql-client/commit/e29bc7aa8d36cd7ef773d74e94260c06e35702d4))
+
 ## [1.0.51](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.50...v1.0.51) (2023-04-09)
 
 
