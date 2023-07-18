@@ -1,3 +1,10 @@
+## [1.0.53](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.52...v1.0.53) (2023-07-18)
+
+
+### Bug Fixes
+
+* **package:** Added new option and util func ([6fd175c](https://github.com/Luis-Domenech/lfd-graphql-client/commit/6fd175c40030b437e041204a1d63085d0fae2b66))
+
 ## [1.0.52](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.51...v1.0.52) (2023-05-08)
 
 
