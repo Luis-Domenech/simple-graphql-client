@@ -61,6 +61,7 @@ export interface ClientGenConfig {
   recursion_overrides: Map<string, number> | undefined
   gen_hooks: boolean
   hide_type_instantiation_error: boolean
+  type_graphql_v2: boolean
 }
 
 export interface SchemaGenConfig {

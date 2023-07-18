@@ -218,6 +218,7 @@ const initialize_from_user_config = (user_config: any, config: GeneratorConfig) 
     recursion_overrides: recursionOverrides,
     gen_hooks: wasProvided(user_config.generator.client.gen_hooks) ? user_config.generator.client.gen_hooks : DEFAULT_CONFIG.client.gen_hooks,
     hide_type_instantiation_error: wasProvided(user_config.generator.client.hide_type_instantiation_error) ? user_config.generator.client.hide_type_instantiation_error : DEFAULT_CONFIG.client.hide_type_instantiation_error,
+    type_graphql_v2: wasProvided(user_config.generator.client.type_graphql_v2) ? user_config.generator.client.type_graphql_v2 : DEFAULT_CONFIG.client.type_graphql_v2,
   }
 }
 
