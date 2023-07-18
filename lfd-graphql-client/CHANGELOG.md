@@ -1,3 +1,10 @@
+## [1.0.54](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.53...v1.0.54) (2023-07-18)
+
+
+### Bug Fixes
+
+* **client:** Added missing type ([c538311](https://github.com/Luis-Domenech/lfd-graphql-client/commit/c538311bcb5cb2d6e0b718a0ffd801fa7bb6db94))
+
 ## [1.0.53](https://github.com/Luis-Domenech/lfd-graphql-client/compare/v1.0.52...v1.0.53) (2023-07-18)
 
 
