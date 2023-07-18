@@ -764,6 +764,12 @@ export const gen_client_types = async (data: GeneratorData, config: GeneratorCon
       `}`,
     ].join("\n"),
     [
+      `export type OperationFetchBaseReturn = {`,
+        `${i(1)}fetch_errors?: string[]`,
+        `${i(1)}output: any`,
+      `}`
+    ].join("\n"),
+    [
       `export type GetOpResultOverride = {`,
         `${i(1)}<Op extends OperationFetchBaseReturn, Output extends Op['output'], Result extends keyof Output>(res: Op, key: Result): Op['output'][Result] | undefined`,
         `${i(1)}<Op extends OperationFetchBaseReturn>(res: Op): Op['output'] | undefined`,
